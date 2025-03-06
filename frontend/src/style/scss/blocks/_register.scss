@@ -1,0 +1,214 @@
+.registerForm {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .logo {
+    width: 194px;
+    margin-bottom: 30px;
+  }
+  .formBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 25px;
+    background-color: #fff;
+    border-radius: 20px;
+    .title {
+      font-weight: bold;
+      font-size: 40px;
+      margin-bottom: 25px;
+    }
+    input {
+      width: 100%;
+      padding: 15px;
+      font-size: 21px;
+      font-weight: 500;
+      background-color: rgba($color: #000000, $alpha: 0.1);
+      outline: none;
+      border: 1px solid #000;
+      border-radius: 10px;
+    }
+    .inputBlocks {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      margin-bottom: 30px;
+    }
+    .passwordInput {
+      position: relative;
+      input {
+        padding-right: 35px;
+      }
+      .showPassIcon {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 18px;
+      }
+    }
+    .haveAccount {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    button {
+      font-size: 24px;
+      font-weight: 500;
+      color: #fff;
+      background-color: #000;
+      border: none;
+      width: 100%;
+      padding: 15px 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.8);
+      }
+    }
+  }
+}
+
+.verifyEmailPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color: #000000, $alpha: 0.7);
+  div {
+    position: relative;
+    padding: 40px 35px;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .closeButton {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: transparent;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .code {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      font-size: 20px;
+      font-weight: bold;
+      opacity: 0.5;
+      margin-bottom: 25px;
+    }
+    input {
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: 600;
+      background-color: transparent;
+      outline: none;
+      border: 1px solid #000;
+      border-radius: 10px;
+      margin-bottom: 27px;
+    }
+    button {
+      font-size: 24px;
+      font-weight: 500;
+      padding: 15px 60px;
+      background-color: #000;
+      border: none;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.8);
+      }
+    }
+  }
+}
+
+.FAPopup {
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    position: relative;
+    background-color: #fff;
+    padding: 40px 35px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .closeButton {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: transparent;
+    }
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .subtitle {
+      margin-bottom: 25px;
+      font-size: 20px;
+      font-weight: bold;
+      opacity: 0.5;
+    }
+    input {
+      width: 100%;
+      border: 1px solid #000;
+      background-color: transparent;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+      outline: none;
+      margin-bottom: 22px;
+    }
+    button {
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      background-color: #000;
+      font-size: 24px;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.7);
+      }
+    }
+  }
+}

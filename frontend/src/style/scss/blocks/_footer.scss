@@ -1,0 +1,22 @@
+footer {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #fff;
+  margin-top: 100px;
+  .container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    align-items: center;
+    .emblema {
+      width: 97px;
+    }
+    .githubLink {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

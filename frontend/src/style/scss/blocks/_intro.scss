@@ -1,0 +1,44 @@
+.intro {
+  justify-content: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  img {
+    width: 194px;
+    margin-bottom: 25px;
+  }
+  .title {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .welcome {
+    font-weight: 500;
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  .subtitle {
+    margin-bottom: 60px;
+    opacity: 0.5;
+  }
+  button {
+    font-size: 32px;
+    font-weight: 800;
+    padding: 18px 70px;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #ffffff10;
+      color: #fff;
+    }
+  }
+}

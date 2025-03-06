@@ -1,0 +1,721 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", serif;
+}
+
+.intro {
+  justify-content: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+.intro img {
+  width: 194px;
+  margin-bottom: 25px;
+}
+.intro .title {
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.intro .welcome {
+  font-weight: 500;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+.intro .subtitle {
+  margin-bottom: 60px;
+  opacity: 0.5;
+}
+.intro button {
+  font-size: 32px;
+  font-weight: 800;
+  padding: 18px 70px;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.intro button a {
+  text-decoration: none;
+  color: #000;
+}
+.intro button:hover {
+  background-color: rgba(255, 255, 255, 0.062745098);
+  color: #fff;
+}
+
+.preloader_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.registerForm {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.registerForm .logo {
+  width: 194px;
+  margin-bottom: 30px;
+}
+.registerForm .formBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 25px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.registerForm .formBlock .title {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+.registerForm .formBlock input {
+  width: 100%;
+  padding: 15px;
+  font-size: 21px;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+.registerForm .formBlock .inputBlocks {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 30px;
+}
+.registerForm .formBlock .passwordInput {
+  position: relative;
+}
+.registerForm .formBlock .passwordInput input {
+  padding-right: 35px;
+}
+.registerForm .formBlock .passwordInput .showPassIcon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+.registerForm .formBlock .haveAccount {
+  margin-top: 10px;
+  font-size: 18px;
+}
+.registerForm .formBlock button {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  width: 100%;
+  padding: 15px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.registerForm .formBlock button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.verifyEmailPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+.verifyEmailPopup div {
+  position: relative;
+  padding: 40px 35px;
+  border-radius: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.verifyEmailPopup div .closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.verifyEmailPopup div .title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.verifyEmailPopup div .code {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.verifyEmailPopup div .subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 0.5;
+  margin-bottom: 25px;
+}
+.verifyEmailPopup div input {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin-bottom: 27px;
+}
+.verifyEmailPopup div button {
+  font-size: 24px;
+  font-weight: 500;
+  padding: 15px 60px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.verifyEmailPopup div button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.FAPopup {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.FAPopup div {
+  position: relative;
+  background-color: #fff;
+  padding: 40px 35px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.FAPopup div .closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.FAPopup div .title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.FAPopup div .subtitle {
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+.FAPopup div input {
+  width: 100%;
+  border: 1px solid #000;
+  background-color: transparent;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+  margin-bottom: 22px;
+}
+.FAPopup div button {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #000;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+.FAPopup div button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.main {
+  padding-top: 70px;
+}
+.main .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 33px;
+  color: #fff;
+}
+.main .container .leftBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 38px;
+}
+.main .container .leftBlock .miniProfile {
+  border: 1px solid #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 25px 48px;
+  max-width: 400px;
+  width: 100%;
+}
+.main .container .leftBlock .miniProfile .nameAvatar {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+.main .container .leftBlock .miniProfile .nameAvatar p {
+  font-weight: bold;
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 170px;
+}
+.main .container .leftBlock .miniProfile .totalDocuments {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.main .container .leftBlock .filterBlock {
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid #fff;
+  padding: 25px 35px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.main .container .leftBlock .filterBlock .title {
+  text-align: center;
+  font-size: 24px;
+}
+.main .container .leftBlock .filterBlock .inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  margin: 20px 0;
+}
+.main .container .leftBlock .filterBlock .inputs input {
+  padding: 15px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+}
+.main .container .leftBlock .filterBlock .dateFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.main .container .leftBlock .filterBlock .dateFilter .line {
+  width: 10px;
+  height: 1px;
+  margin: 0 5px;
+  background-color: #fff;
+}
+.main .container .leftBlock .filterBlock .dateFilter input {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 15px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  outline: none;
+}
+.main .container .leftBlock .filterBlock .clear {
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid #fff;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: transparent;
+  color: #fff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.main .container .leftBlock .filterBlock .clear:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.main .container .myDocuments {
+  width: 100%;
+  padding: 25px 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #fff;
+}
+.main .container .myDocuments .title {
+  text-align: center;
+  font-size: 27px;
+  margin-bottom: 35px;
+}
+.main .container .myDocuments .documentList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.main .container .myDocuments .documentList .doc {
+  width: 100%;
+  padding: 15px 25px;
+  background-color: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .container .myDocuments .documentList .doc .docInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  font-weight: bold;
+}
+.main .container .myDocuments .documentList .doc .docInfo .docTitle {
+  font-size: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 280px;
+}
+.main .container .myDocuments .documentList .doc button {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.main .container .myDocuments .documentList .doc button:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+.main .container .myDocuments .docMore {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main .container .myDocuments .docMore .docMoreBlock {
+  padding: 25px 35px 15px 25px;
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.main .container .myDocuments .docMore .docMoreBlock .closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.main .container .myDocuments .docMore .docMoreBlock .name {
+  font-size: 24px;
+}
+.main .container .myDocuments .docMore .docMoreBlock .dateTime {
+  font-size: 18px;
+}
+.main .container .myDocuments .docMore .docMoreBlock .studentsList {
+  margin-top: 10px;
+  list-style-position: inside;
+}
+.main .container .myDocuments .docMore .docMoreBlock .buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  margin-top: 25px;
+}
+.main .container .myDocuments .docMore .docMoreBlock .buttons .downloadBtn {
+  background-color: #000;
+  border: none;
+  color: #fff;
+}
+.main .container .myDocuments .docMore .docMoreBlock .buttons .downloadBtn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.main .container .myDocuments .docMore .docMoreBlock .buttons .closeBtn {
+  border: 1px solid #000;
+  background-color: transparent;
+}
+.main .container .myDocuments .docMore .docMoreBlock .buttons .closeBtn:hover {
+  background-color: #000;
+  color: #fff;
+}
+.main .container .myDocuments .docMore .docMoreBlock .buttons button {
+  flex-grow: 1;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #fff;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .container .emblemaHeader {
+  width: 97px;
+}
+header .container .navLinks {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+}
+header .container .navLinks li {
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+header .container .navLinks li a {
+  text-decoration: none;
+  color: #fff;
+}
+header .container .navLinks li:hover {
+  padding-bottom: 0;
+  border-bottom-color: #fff;
+}
+
+footer {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #fff;
+  margin-top: 100px;
+}
+footer .container {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  align-items: center;
+}
+footer .container .emblema {
+  width: 97px;
+}
+footer .container .githubLink {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.profilePage .container {
+  max-width: 720px;
+}
+
+.profile {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  margin: 50px 0;
+}
+.profile .avatar {
+  position: relative;
+}
+.profile .avatar .changeAvatarBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.profile .avatar .changeAvatarBtn:hover {
+  opacity: 1;
+}
+.profile .avatar .changeAvatarBtn label {
+  cursor: pointer;
+}
+.profile .usernameBlock {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+  color: #000;
+}
+.profile .usernameBlock .username {
+  font-weight: bold;
+  font-size: 24px;
+}
+.profile .usernameBlock .newNameInput {
+  outline: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+}
+.profile .usernameBlock .saveNewUsername {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.profile .usernameBlock .saveNewUsername:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background-color: #000;
+}
+.profile .usernameBlock .changeUsernameBtn {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid #000;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.profile .usernameBlock .changeUsernameBtn:hover {
+  background-color: #000;
+  color: #fff;
+}
+.profile .totalDoc {
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: 10px;
+}
+.profile .logoutBtn {
+  width: 35%;
+  padding: 10px 25px;
+  margin-left: auto;
+  margin-top: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #000;
+  background-color: transparent;
+}
+.profile .logoutBtn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.logoutConfirmContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoutConfirmContainer .logoutConfirm {
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  align-items: center;
+}
+.logoutConfirmContainer .logoutConfirm .logoutBtns {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+.logoutConfirmContainer .logoutConfirm .logoutBtns button {
+  border: 1px solid #000;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  flex-grow: 1;
+  font-size: 21px;
+  padding: 10px 5px;
+  transition: all 0.3s ease;
+}
+.logoutConfirmContainer .logoutConfirm .logoutBtns button:nth-child(1):hover {
+  background-color: red;
+  color: #fff;
+  border-color: transparent;
+}
+.logoutConfirmContainer .logoutConfirm .logoutBtns button:nth-child(2):hover {
+  background-color: green;
+  color: #fff;
+  border-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  background: url("../../assets/img/background.svg") no-repeat;
+  background-size: cover;
+}
+
+.container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+}/*# sourceMappingURL=index.css.map */

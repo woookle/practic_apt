@@ -1,0 +1,33 @@
+header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #fff;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .emblemaHeader {
+      width: 97px;
+    }
+    .navLinks {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+      font-weight: bold;
+      li {
+        cursor: pointer;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+        a {
+          text-decoration: none;
+          color: #fff;
+        }
+        &:hover {
+          padding-bottom: 0;
+          border-bottom-color: #fff;
+        }
+      }
+    }
+  }
+}

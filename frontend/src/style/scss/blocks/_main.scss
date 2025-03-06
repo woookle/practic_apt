@@ -1,0 +1,225 @@
+.main {
+  padding-top: 70px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 33px;
+    color: #fff;
+    .leftBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 38px;
+      .miniProfile {
+        border: 1px solid #fff;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        padding: 25px 48px;
+        max-width: 400px;
+        width: 100%;
+        .nameAvatar {
+          p {
+            font-weight: bold;
+            font-size: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 170px;
+          }
+          display: flex;
+          align-items: center;
+          gap: 25px;
+          margin-bottom: 20px;
+        }
+        .totalDocuments {
+          font-size: 20px;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+      }
+      .filterBlock {
+        max-width: 400px;
+        width: 100%;
+        border: 1px solid #fff;
+        padding: 25px 35px;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        .title {
+          text-align: center;
+          font-size: 24px;
+        }
+        .inputs {
+          display: flex;
+          flex-direction: column;
+          row-gap: 15px;
+          margin: 20px 0;
+          input {
+            padding: 15px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #fff;
+            background-color: transparent;
+            color: #fff;
+            outline: none;
+          }
+        }
+        .dateFilter {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 50px;
+          .line {
+            width: 10px;
+            height: 1px;
+            margin: 0 5px;
+            background-color: #fff;
+          }
+          input {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 15px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            outline: none;
+          }
+        }
+        .clear {
+          width: 100%;
+          padding: 10px 0;
+          border: 1px solid #fff;
+          font-size: 20px;
+          font-weight: bold;
+          background-color: transparent;
+          color: #fff;
+          transition: all 0.2s ease;
+          cursor: pointer;
+          &:disabled {
+            opacity: 0.5;
+            cursor: default;
+          }
+        }
+      }
+    }
+    .myDocuments {
+      width: 100%;
+      padding: 25px 50px;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      border: 1px solid #fff;
+      .title {
+        text-align: center;
+        font-size: 27px;
+        margin-bottom: 35px;
+      }
+      .documentList {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        .doc {
+          width: 100%;
+          padding: 15px 25px;
+          background-color: rgba($color: #ffffff, $alpha: 0.18);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .docInfo {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            font-weight: bold;
+            .docTitle {
+              font-size: 24px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              width: 280px;
+            }
+          }
+          button {
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #000;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: rgba($color: #fff, $alpha: 0.18);
+            }
+          }
+        }
+      }
+      .docMore {
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .docMoreBlock {
+          padding: 25px 35px 15px 25px;
+          border-radius: 10px;
+          background-color: #fff;
+          position: relative;
+          color: #000;
+          display: flex;
+          flex-direction: column;
+          row-gap: 5px;
+          .closeButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+          }
+          .name {
+            font-size: 24px;
+          }
+          .dateTime {
+            font-size: 18px;
+          }
+          .studentsList {
+            margin-top: 10px;
+            list-style-position: inside;
+          }
+          .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            margin-top: 25px;
+            .downloadBtn {
+              background-color: #000;
+              border: none;
+              color: #fff;
+              &:hover {
+                background-color: rgba($color: #000000, $alpha: 0.7);
+              }
+            }
+            .closeBtn {
+              border: 1px solid #000;
+              background-color: transparent;
+              &:hover {
+                background-color: #000;
+                color: #fff;
+              }
+            }
+            button {
+              flex-grow: 1;
+              padding: 10px 15px;
+              cursor: pointer;
+              font-weight: bold;
+              transition: all 0.3s ease;
+            }
+          }
+        }
+      }
+    }
+  }
+}

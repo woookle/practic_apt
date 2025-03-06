@@ -1,0 +1,147 @@
+.profilePage {
+  .container {
+    max-width: 720px;
+  }
+}
+.profile {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  margin: 50px 0;
+  .avatar {
+    position: relative;
+    .changeAvatarBtn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 120px;
+      background-color: rgba($color: #000000, $alpha: 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      font-size: 13px;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      &:hover {
+        opacity: 1;
+      }
+      label {
+        cursor: pointer;
+      }
+    }
+  }
+  .usernameBlock {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+    color: #000;
+    .username {
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .newNameInput {
+      outline: none;
+      padding: 5px 10px;
+      border: 1px solid #000;
+    }
+    .saveNewUsername {
+      padding: 5px 10px;
+      background-color: transparent;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: rgba($color: #fff, $alpha: 0.5);
+        color: #fff;
+        background-color: #000;
+      }
+    }
+    .changeUsernameBtn {
+      padding: 5px 10px;
+      background-color: transparent;
+      border: 1px solid #000;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+  .totalDoc {
+    font-weight: bold;
+    font-size: 28px;
+    margin-top: 10px;
+  }
+  .logoutBtn {
+    width: 35%;
+    padding: 10px 25px;
+    margin-left: auto;
+    margin-top: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #000;
+    background-color: transparent;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+.logoutConfirmContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .logoutConfirm {
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: center;
+    .logoutBtns {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      button {
+        border: 1px solid #000;
+        background-color: transparent;
+        font-weight: bold;
+        cursor: pointer;
+        flex-grow: 1;
+        font-size: 21px;
+        padding: 10px 5px;
+        transition: all 0.3s ease;
+        &:nth-child(1):hover {
+          background-color: red;
+          color: #fff;
+          border-color: transparent;
+        }
+        &:nth-child(2):hover {
+          background-color: green;
+          color: #fff;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}

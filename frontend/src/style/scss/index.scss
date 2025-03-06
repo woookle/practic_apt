@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Montserrat", serif; }
+
+@import "./blocks/intro";
+@import "./blocks/preloader";
+@import "./blocks/register";
+@import "./blocks/main";
+@import "./blocks/header";
+@import "./blocks/footer";
+@import "./blocks/profile";
+
+body {
+  min-height: 100vh;
+  background: url('../../assets/img/background.svg') no-repeat;
+  background-size: cover;
+}
+
+.container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+}
