@@ -10,6 +10,14 @@ header {
     .emblemaHeader {
       width: 97px;
     }
+    .headerAvatar {
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+      &:hover {
+        border-color: #fff;
+      }
+    }
     .navLinks {
       list-style-type: none;
       display: flex;

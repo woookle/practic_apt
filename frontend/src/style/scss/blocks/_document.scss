@@ -1,0 +1,257 @@
+.createDocumentBlock {
+  .container {
+    padding: 50px 0;
+  }
+  .createDoc {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    .title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .titleInput {
+      input {
+        padding: 10px 20px;
+        outline: none;
+        border: 1px solid #000;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    .dateInputs {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        input {
+          outline: none;
+          padding: 5px;
+        }
+      }
+      margin-bottom: 10px;
+    }
+    .checkCompany {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      .dropDownCompanyes {
+        position: relative;
+        .companyBtn {
+          padding: 5px 10px;
+          background-color: #fff;
+          border: 1px solid #000;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: #000;
+            color: #fff;
+          }
+        }
+        .companyList {
+          position: absolute;
+          z-index: 100;
+          top: 100%;
+          padding: 5px;
+          background-color: #000;
+          margin-top: 5px;
+          input {
+            outline: none;
+            padding: 5px;
+            margin-bottom: 5px;
+          }
+          ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            list-style-type: none;
+            color: #fff;
+            text-align: center;
+            li {
+              button {
+                width: 100%;
+                background-color: #fff;
+                border: none;
+                cursor: pointer;
+                font-size: 14px;
+                padding: 5px;
+                transition: all 0.3s ease;
+                &:hover {
+                  background-color: rgba($color: #fff, $alpha: 0.8);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .groupAndStudents {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      .dropDownGroups {
+        position: relative;
+        .dropDownTitle {
+          padding: 5px 10px;
+          background-color: #fff;
+          border: 1px solid #000;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: #000;
+            color: #fff;
+          }
+        }
+        .groupList {
+          position: absolute;
+          z-index: 100;
+          top: 100%;
+          padding: 5px;
+          background-color: #000;
+          margin-top: 5px;
+          input {
+            outline: none;
+            padding: 5px;
+            margin-bottom: 5px;
+          }
+          ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            list-style-type: none;
+            color: #fff;
+            text-align: center;
+            li {
+              button {
+                width: 100%;
+                background-color: #fff;
+                border: none;
+                cursor: pointer;
+                font-size: 14px;
+                padding: 5px;
+                transition: all 0.3s ease;
+                &:hover {
+                  background-color: rgba($color: #fff, $alpha: 0.8);
+                }
+              }
+            }
+          }
+        }
+      }
+      .dropDownStudents {
+        flex-grow: 1;
+        position: relative;
+        .dropDownButton {
+          padding: 5px 10px;
+          background-color: #fff;
+          border: 1px solid #000;
+          cursor: pointer;
+          width: 100%;
+          text-align: left;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: #000;
+            color: #fff;
+          }
+        }
+        .studentList {
+          position: absolute;
+          z-index: 100;
+          top: 100%;
+          padding: 5px;
+          background-color: #000;
+          margin-top: 5px;
+          input {
+            outline: none;
+            padding: 5px;
+            margin-bottom: 5px;
+          }
+          ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            list-style-type: none;
+            color: #fff;
+            text-align: center;
+            li {
+              button {
+                width: 100%;
+                background-color: #fff;
+                border: none;
+                cursor: pointer;
+                font-size: 14px;
+                padding: 5px;
+                transition: all 0.3s ease;
+                &:hover {
+                  background-color: rgba($color: #fff, $alpha: 0.8);
+                }
+              }
+            }
+          }
+        }
+      }
+      .addStudentBtn {
+        padding: 5px 10px;
+        background-color: #fff;
+        border: 1px solid #000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: #000;
+          color: #fff;
+        }
+      }
+    }
+    .studentsList {
+      margin: 10px 0;
+      border: 1px solid #000;
+      padding: 10px;
+      ul {
+        list-style: none;
+        li {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          button {
+            padding: 5px 10px;
+            background-color: #fff;
+            border: 1px solid #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: red;
+              color: #fff;
+              border-color: transparent;
+            }
+          }
+        }
+      }
+    }
+    .createBtn {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      button {
+        padding: 10px 20px;
+        background-color: #000;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: green;
+          color: #fff;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}

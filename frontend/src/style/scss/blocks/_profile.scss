@@ -109,8 +109,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  h1 {
+    font-size: 21px;
+  }
   .logoutConfirm {
-    padding: 50px;
+    padding: 20px;
     background-color: #fff;
     border-radius: 20px;
     display: flex;
@@ -128,7 +131,7 @@
         font-weight: bold;
         cursor: pointer;
         flex-grow: 1;
-        font-size: 21px;
+        
         padding: 10px 5px;
         transition: all 0.3s ease;
         &:nth-child(1):hover {

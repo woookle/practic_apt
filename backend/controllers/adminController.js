@@ -19,7 +19,7 @@ class AdminController {
   // СОЗДАТЬ ГРУППУ
   static createGroup = async (req, res) => {
     try {
-      const { name } = req.body;
+      const { name, course } = req.body;
       const isHaveGroup = await Group.findOne({ name });
 
       if (isHaveGroup) {
@@ -28,7 +28,8 @@ class AdminController {
           .json({ message: "Такая группа уже существует!" });
       }
 
-      const newGroup = await Group.create({ name });
+      const newGroup = await Group({ name, course });
+      await newGroup.save();
 
       return res
         .status(201)
@@ -115,7 +116,7 @@ class AdminController {
           .json({ message: "Такой студент уже существует!" });
       }
 
-      const student = new Student.create({
+      const student = new Student({
         name,
         group,
       });
@@ -223,13 +224,13 @@ class AdminController {
   static createPractic = async (req, res) => {
     try {
       const name = req.body.name;
-      const isHave = await Practic.find({ name });
+      const isHave = await Practic.findOne({ name });
       if (isHave) {
         return res
           .status(401)
           .json({ message: "Такое название уже существует!" });
       }
-      const prac = new Practic.create({
+      const prac = new Practic({
         name,
       });
       await prac.save();
@@ -294,11 +295,11 @@ class AdminController {
   static createCompany = async (req, res) => {
     try {
       const name = req.body.name;
-      const isHave = await Company.find({ name });
+      const isHave = await Company.findOne({ name });
       if (isHave) {
         return res.status(401).json({ message: "Такая компания уже есть!" });
       }
-      const comp = new Company.create({
+      const comp = new Company({
         name,
       });
       await comp.save();

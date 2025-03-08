@@ -157,6 +157,16 @@ export const logoutFromAcc = createAsyncThunk(
   }
 );
 
+// СОЗДАТЬ ДОКУМЕНТ
+export const createDocument = async (document) => {
+  try {
+    const response = await instance.post('/user/documents', document);
+    toast.success(response.data.message)
+  } catch (error) {
+    toast.error(error.response.data.message)
+  }
+}
+
 // ВЫДАТЬ СВОИ ДОКУМЕНТЫ
 export const getMyDocuments = createAsyncThunk(
   "user/documents",
@@ -169,6 +179,21 @@ export const getMyDocuments = createAsyncThunk(
     }
   }
 );
+
+// УДАЛИТЬ ДОКУМЕНТ
+export const deleteDocument = createAsyncThunk(
+  "user/documents/delete",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await instance.delete('/user/documents/' + id);
+      toast.success(response.data.message);
+      return id;
+    } catch (error) {
+      toast.error("Ошибка при удалении документа!");
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 
 // СКАЧАТЬ ДОКУМЕНТ ПО АЙДИ
 export const downloadDocumentById = async (documentId) => {
@@ -184,3 +209,43 @@ export const downloadDocumentById = async (documentId) => {
     toast.error("Ошибка при скачивании документа!");
   }
 };
+
+// ВЫДАТЬ ВСЕХ СТУДЕНТОВ
+export const getStudentsGroup = async (groupId) => {
+  try {
+    const response = await instance.get('/user/student/' + groupId);
+    return response.data.students
+  } catch (error) {
+    toast.error("Не удалось получить список студентов!")
+  }
+}
+
+// ВЫДАТЬ ВСЕ ГРУППЫ
+export const getGroups = async () => {
+  try {
+    const response = await instance.get('/user/group');
+    return response.data.groups
+  } catch (error) {
+    toast.error("Не удалось получить группы студентов!")
+  }
+}
+
+// ВЫДАТЬ ВСЕ КОМПАНИИ
+export const getCompanyes = async () => {
+  try {
+    const response = await instance.get('/user/company')
+    return response.data.companyes
+  } catch (error) {
+    toast.error("Не удалось получить компании!")
+  }
+}
+
+// ВЫДАТЬ ВСЕ НАЗВАНИЯ ПРАКТИК
+export const getPractics = async () => {
+  try {
+    const response = await instance.get('/user/practic');
+    return response.data.practics
+  } catch (error) {
+    toast.error("Не удалось получить названия практик!")
+  }
+}

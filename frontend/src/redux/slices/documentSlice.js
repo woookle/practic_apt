@@ -49,8 +49,6 @@ export const documentSlice = createSlice({
         state.loading = false;
         state.documents = action.payload;
         state.sortedDocuments = action.payload;
-
-        console.log(state.sortedDocuments);
       })
       .addCase(getMyDocuments.rejected, (state, action) => {
         state.loading = false;

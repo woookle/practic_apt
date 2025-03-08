@@ -518,6 +518,14 @@ header .container {
 header .container .emblemaHeader {
   width: 97px;
 }
+header .container .headerAvatar {
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+header .container .headerAvatar:hover {
+  border-color: #fff;
+}
 header .container .navLinks {
   list-style-type: none;
   display: flex;
@@ -672,8 +680,11 @@ footer .container .githubLink {
   align-items: center;
   justify-content: center;
 }
+.logoutConfirmContainer h1 {
+  font-size: 21px;
+}
 .logoutConfirmContainer .logoutConfirm {
-  padding: 50px;
+  padding: 20px;
   background-color: #fff;
   border-radius: 20px;
   display: flex;
@@ -693,7 +704,6 @@ footer .container .githubLink {
   font-weight: bold;
   cursor: pointer;
   flex-grow: 1;
-  font-size: 21px;
   padding: 10px 5px;
   transition: all 0.3s ease;
 }
@@ -703,6 +713,254 @@ footer .container .githubLink {
   border-color: transparent;
 }
 .logoutConfirmContainer .logoutConfirm .logoutBtns button:nth-child(2):hover {
+  background-color: green;
+  color: #fff;
+  border-color: transparent;
+}
+
+.createDocumentBlock .container {
+  padding: 50px 0;
+}
+.createDocumentBlock .createDoc {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 25px;
+}
+.createDocumentBlock .createDoc .title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.createDocumentBlock .createDoc .titleInput input {
+  padding: 10px 20px;
+  outline: none;
+  border: 1px solid #000;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.createDocumentBlock .createDoc .dateInputs {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 10px;
+}
+.createDocumentBlock .createDoc .dateInputs div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.createDocumentBlock .createDoc .dateInputs div input {
+  outline: none;
+  padding: 5px;
+}
+.createDocumentBlock .createDoc .checkCompany {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes {
+  position: relative;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyBtn {
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyBtn:hover {
+  background-color: #000;
+  color: #fff;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList {
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  padding: 5px;
+  background-color: #000;
+  margin-top: 5px;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList input {
+  outline: none;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  list-style-type: none;
+  color: #fff;
+  text-align: center;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList ul li button {
+  width: 100%;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.createDocumentBlock .createDoc .groupAndStudents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups {
+  position: relative;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .dropDownTitle {
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .dropDownTitle:hover {
+  background-color: #000;
+  color: #fff;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList {
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  padding: 5px;
+  background-color: #000;
+  margin-top: 5px;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList input {
+  outline: none;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  list-style-type: none;
+  color: #fff;
+  text-align: center;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList ul li button {
+  width: 100%;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents {
+  flex-grow: 1;
+  position: relative;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .dropDownButton {
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .dropDownButton:hover {
+  background-color: #000;
+  color: #fff;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .studentList {
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  padding: 5px;
+  background-color: #000;
+  margin-top: 5px;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .studentList input {
+  outline: none;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .studentList ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  list-style-type: none;
+  color: #fff;
+  text-align: center;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .studentList ul li button {
+  width: 100%;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .studentList ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.createDocumentBlock .createDoc .groupAndStudents .addStudentBtn {
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .groupAndStudents .addStudentBtn:hover {
+  background-color: #000;
+  color: #fff;
+}
+.createDocumentBlock .createDoc .studentsList {
+  margin: 10px 0;
+  border: 1px solid #000;
+  padding: 10px;
+}
+.createDocumentBlock .createDoc .studentsList ul {
+  list-style: none;
+}
+.createDocumentBlock .createDoc .studentsList ul li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.createDocumentBlock .createDoc .studentsList ul li button {
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .studentsList ul li button:hover {
+  background-color: red;
+  color: #fff;
+  border-color: transparent;
+}
+.createDocumentBlock .createDoc .createBtn {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.createDocumentBlock .createDoc .createBtn button {
+  padding: 10px 20px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .createBtn button:hover {
   background-color: green;
   color: #fff;
   border-color: transparent;

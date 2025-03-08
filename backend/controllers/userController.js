@@ -25,14 +25,10 @@ class UserController {
   static createDocument = async (req, res) => {
     try {
       const dataContent = req.body.data;
-      const group = req.body.group;
       const title = req.body.title;
       const user = req.user;
-      if (!group) {
-        return res.status(404).json({ message: "Группа не найдена!" });
-      }
 
-      const data = { ...dataContent, groupName: group.name };
+      const data = { ...dataContent };
 
       const templatePath = path.resolve(
         __dirname,

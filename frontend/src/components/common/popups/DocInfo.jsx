@@ -16,8 +16,8 @@ const DocInfo = ({ isOpen, document, setIsOpen, setCurrentDoc }) => {
             <b>Список студентов:</b>
             {document.data.students.map((stud, key) => (
               <li key={key}>
-                {stud.name} | Работает: {stud.isWork ? "Да" : "Нет"}{" "}
-                {stud.companyName !== "-" && `Компания ${stud.companyName}`}
+                ФИО: {stud.name} | Группа: {stud.group} | Работает: {stud.isWork ? "Да" : "Нет"}{" "}
+                {stud.companyName !== "-" && ` | Компания: ${stud.companyName}`}
               </li>
             ))}
           </ul>
