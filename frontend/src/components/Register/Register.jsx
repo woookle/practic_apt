@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
-const Register = ({ userData, handleInput, loading, verifyEmail, Reg, VerifyCode, loadingVerifyEmail, showPass, setShowPass }) => {
+const Register = ({ userData, handleInput, loading, verifyEmail, Reg, VerifyCode, loadingVerifyEmail, showPass, setShowPass, setVerifyEmail }) => {
   return (
     <>
       <form className="registerForm">
@@ -53,7 +53,7 @@ const Register = ({ userData, handleInput, loading, verifyEmail, Reg, VerifyCode
           </p>
         </div>
       </form>
-      <VerifyEmailPopup VerifyCode={VerifyCode} loadingVerifyEmail={loadingVerifyEmail} userData={userData} verifyEmail={verifyEmail} handleInput={handleInput} />
+      <VerifyEmailPopup VerifyCode={VerifyCode} loadingVerifyEmail={loadingVerifyEmail} userData={userData} verifyEmail={verifyEmail} handleInput={handleInput} setVerifyEmail={setVerifyEmail} />
     </>
   );
 };

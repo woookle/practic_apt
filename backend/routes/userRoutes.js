@@ -19,6 +19,7 @@ router.get('/student/:id', AdminController.getStudentsByGroup);
 router.get('/group', AdminController.getGroups);
 router.get('/company', AdminController.getCompanyes);
 router.get('/practic', AdminController.getPractics);
+router.get('/lesson', AdminController.getLessons);
 
 
 // УПРАВЛЕНИЕ СВОИМ АККАУНТОМ

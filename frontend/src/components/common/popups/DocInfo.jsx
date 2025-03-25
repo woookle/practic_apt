@@ -12,12 +12,12 @@ const DocInfo = ({ isOpen, document, setIsOpen, setCurrentDoc }) => {
           <p className="name"><b>Название:</b> {document.title}</p>
           <p className="dateTime"><b>Создан:</b> {FormatDate(document.createdAt)}</p>
           <p className="gr"><b>Группа:</b> {document.group}</p>
+          <p className="gr"><b>Курс:</b> {document.data.course}</p>
           <ul className="studentsList">
             <b>Список студентов:</b>
             {document.data.students.map((stud, key) => (
               <li key={key}>
-                ФИО: {stud.name} | Группа: {stud.group} | Работает: {stud.isWork ? "Да" : "Нет"}{" "}
-                {stud.companyName !== "-" && ` | Компания: ${stud.companyName}`}
+                ФИО: {stud.name} | Группа: {stud.group}
               </li>
             ))}
           </ul>

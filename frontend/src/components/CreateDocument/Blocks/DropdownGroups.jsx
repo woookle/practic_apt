@@ -9,13 +9,16 @@ const DropdownGroups = ({
   selectedGroup,
   setSelectedGroup,
   findStudentByGroup,
-  setSelectedStudent
+  setSelectedStudent,
+  dropdownRef,
+  filterGroups,
+  setCourse
 }) => {
   return (
     <div className="dropDownGroups">
       {isLoadGroups ? (
         <button className="dropDownTitle">
-          <ClipLoader speedMultiplier={0.5} />
+          <ClipLoader speedMultiplier={0.5} size={14} />
         </button>
       ) : (
         <button type="button" className="dropDownTitle" onClick={() => setIsOpenGroup(!isOpenGroup)}>
@@ -23,10 +26,11 @@ const DropdownGroups = ({
         </button>
       )}
       {isOpenGroup && (
-        <div className="groupList">
+        <div className="groupList" ref={dropdownRef}>
           <input
             type="text"
             placeholder="Поиск группы..."
+            value={filterGroups}
             onChange={handleFilterGroup}
           />
           <ul>
@@ -39,6 +43,7 @@ const DropdownGroups = ({
                       onClick={() => {
                         setSelectedGroup(gr.name);
                         findStudentByGroup(gr._id);
+                        setCourse(gr.course);
                         setSelectedStudent("");
                         setIsOpenGroup(false);
                       }}

@@ -96,6 +96,35 @@ export const verifyLogin = createAsyncThunk(
   }
 );
 
+// ЗАПРОСЫ НА 2FA
+export const on2FA = createAsyncThunk(
+  "auth/on2fa",
+  async(_, { rejectWithValue }) => {
+    try {
+      const response = await instance.patch("/auth/enable-2fa");
+      toast.success("Двухэтапная авторизация успешно включена!");
+      return { qr_code: response.data.qr_code, code: response.data.code };
+    } catch (error) {
+      toast.error("Ошибка при включении двухэтапной авторизации")
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+
+export const off2FA = createAsyncThunk(
+  "auth/off2fa",
+  async(_, { rejectWithValue }) => {
+    try {
+      const response = await instance.patch("/auth/disable-2fa");
+      toast.success("Двухэтапная авторизация успешно отключена!");
+      return response.data;
+    } catch (error) {
+      toast.error("Ошибка при выключении двухэтапной авторизации")
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+
 // ВЫДАТЬ ИНФОРМАЦИЮ АККАУНТА
 export const fetchProfile = createAsyncThunk(
   "auth/fetchProfile",
@@ -158,7 +187,7 @@ export const logoutFromAcc = createAsyncThunk(
 );
 
 // СОЗДАТЬ ДОКУМЕНТ
-export const createDocument = async (document) => {
+export const uploadDocument = async (document) => {
   try {
     const response = await instance.post('/user/documents', document);
     toast.success(response.data.message)
@@ -247,5 +276,15 @@ export const getPractics = async () => {
     return response.data.practics
   } catch (error) {
     toast.error("Не удалось получить названия практик!")
+  }
+}
+
+// ВЫДАТЬ ВСЕ УЧЕБНЫЕ ПРЕДМЕТЫ
+export const getLessons = async () => {
+  try {
+    const response = await instance.get('/user/lesson');
+    return response.data.lessons
+  } catch (error) {
+    toast.error("Не удалось получить названия учебных предметов!")
   }
 }

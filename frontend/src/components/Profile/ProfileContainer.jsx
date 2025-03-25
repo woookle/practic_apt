@@ -3,6 +3,7 @@ import { changeAccountName, changeAvatarProfile, logoutFromAcc } from "../../api
 import Profile from "./Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import use2FA from "../../hooks/use2FA";
 
 const ProfileContainer = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const ProfileContainer = () => {
   const [isOpenConfirm, setIsOpenConfirm] = useState(false);
   const [name, setName] = useState(user.username);
   const [isChanging, setIsChanging] = useState(false);
+  const { is2FAPopup, setIs2FAPopup, enable2FA, disable2FA, is2faUpdating, faContent, is2Fa } = use2FA()
 
   const changeAvatar = (new_avatar) => {
     const formData = new FormData();
@@ -47,6 +49,13 @@ const ProfileContainer = () => {
       logout={logout}
       isOpenConfirm={isOpenConfirm}
       setIsOpenConfirm={setIsOpenConfirm}
+      is2FAPopup={is2FAPopup}
+      setIs2FAPopup={setIs2FAPopup}
+      enable2FA={enable2FA}
+      disable2FA={disable2FA}
+      is2faUpdating={is2faUpdating}
+      faContent={faContent}
+      is2Fa={is2Fa}
     />
   );
 };

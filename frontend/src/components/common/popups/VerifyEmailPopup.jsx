@@ -2,7 +2,7 @@ import { BarLoader } from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const VerifyEmailPopup = ({ userData, verifyEmail, loadingVerifyEmail, handleInput, VerifyCode }) => {
+const VerifyEmailPopup = ({ userData, verifyEmail, loadingVerifyEmail, handleInput, VerifyCode, setVerifyEmail }) => {
   if (verifyEmail) {
     return (
       <div className="verifyEmailPopup">
@@ -10,7 +10,7 @@ const VerifyEmailPopup = ({ userData, verifyEmail, loadingVerifyEmail, handleInp
           <div
             className="closeButton"
             onClick={() => {
-              setVerifyOtp(false);
+              setVerifyEmail(false);
             }}
           >
             <FontAwesomeIcon icon={faXmark} />

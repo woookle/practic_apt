@@ -12,7 +12,7 @@
     }
     .titleInput {
       input {
-        padding: 10px 20px;
+        padding: 10px;
         outline: none;
         border: 1px solid #000;
         width: 100%;
@@ -54,7 +54,7 @@
         }
         .companyList {
           position: absolute;
-          z-index: 100;
+          z-index: 666;
           top: 100%;
           padding: 5px;
           background-color: #000;
@@ -63,6 +63,8 @@
             outline: none;
             padding: 5px;
             margin-bottom: 5px;
+            width: 100%;
+            min-width: 200px;
           }
           ul {
             display: flex;
@@ -89,6 +91,63 @@
         }
       }
     }
+    .checkPractic {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .dropDownPractics {
+      position: relative;
+      .dropDownTitle {
+        padding: 5px 10px;
+        background-color: #fff;
+        border: 1px solid #000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: #000;
+          color: #fff;
+        }
+      }
+      .practicList {
+        position: absolute;
+        top: 100%;
+        padding: 5px;
+        background-color: #000;
+        margin-top: 5px;
+        z-index: 666;
+        input {
+          outline: none;
+          padding: 5px;
+          margin-bottom: 5px;
+          width: 100%;
+          min-width: 200px;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+          row-gap: 5px;
+          list-style-type: none;
+          color: #fff;
+          text-align: center;
+          li {
+            button {
+              width: 100%;
+              background-color: #fff;
+              border: none;
+              cursor: pointer;
+              font-size: 14px;
+              padding: 5px;
+              transition: all 0.3s ease;
+              &:hover {
+                background-color: rgba($color: #fff, $alpha: 0.8);
+              }
+            }
+          }
+        }
+      }
+    }
     .groupAndStudents {
       display: flex;
       align-items: center;
@@ -109,15 +168,17 @@
         }
         .groupList {
           position: absolute;
-          z-index: 100;
           top: 100%;
           padding: 5px;
           background-color: #000;
           margin-top: 5px;
+          z-index: 666;
           input {
             outline: none;
             padding: 5px;
             margin-bottom: 5px;
+            width: 100%;
+            min-width: 200px;
           }
           ul {
             display: flex;
@@ -161,7 +222,6 @@
         }
         .studentList {
           position: absolute;
-          z-index: 100;
           top: 100%;
           padding: 5px;
           background-color: #000;
@@ -170,6 +230,8 @@
             outline: none;
             padding: 5px;
             margin-bottom: 5px;
+            width: 100%;
+            min-width: 200px;
           }
           ul {
             display: flex;
@@ -250,6 +312,10 @@
           background-color: green;
           color: #fff;
           border-color: transparent;
+        }
+        &:disabled {
+          background-color: rgba($color: #000000, $alpha: 0.3);
+          cursor: default;
         }
       }
     }

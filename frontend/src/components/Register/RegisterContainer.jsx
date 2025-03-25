@@ -10,7 +10,7 @@ const RegisterContainer = () => {
     verifyPassword: "",
     code: "",
   });
-  const { loading, verifyEmail, Reg, VerifyCode, loadingVerifyEmail } =
+  const { loading, verifyEmail, Reg, VerifyCode, loadingVerifyEmail, setVerifyEmail } =
     useRegister();
   const [showPass, setShowPass] = useState(false);
 
@@ -29,6 +29,7 @@ const RegisterContainer = () => {
       loadingVerifyEmail={loadingVerifyEmail}
       showPass={showPass}
       setShowPass={setShowPass}
+      setVerifyEmail={setVerifyEmail}
     />
   );
 };

@@ -38,4 +38,10 @@ router.post('/practic', AdminController.createPractic);
 router.patch('/practic/:id', AdminController.changePractic);
 router.delete('/practic/:id', AdminController.deletePractic)
 
+// УПРАВЛЕНИЕ ПРЕДМЕТАМИ
+router.post('/lesson', AdminController.createLesson);
+router.get('/lesson', AdminController.getLessons);
+router.patch('/lesson/:id', AdminController.changeLesson);
+router.delete('/lesson/:id', AdminController.deleteLesson)
+
 export default router;

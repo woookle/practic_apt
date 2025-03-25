@@ -9,13 +9,15 @@ const DropdownStudents = ({
   filteredStudents,
   handleFilterStudent,
   isLoadStudents,
+  dropdownRef,
+  filterStudents
 }) => {
   return (
     <div className="dropDownStudents">
       {selectedGroup === "" ? (
         <p>Группа не выбрана!</p>
       ) : isLoadStudents ? (
-        <ClipLoader speedMultiplier={0.5} />
+        <ClipLoader speedMultiplier={0.5} size={14} />
       ) : (
         <button
           className="dropDownButton"
@@ -25,10 +27,11 @@ const DropdownStudents = ({
         </button>
       )}
       {isOpenStudent && (
-        <div className="studentList">
+        <div className="studentList" ref={dropdownRef}>
           <input
             type="text"
             placeholder="Поиск студента..."
+            value={filterStudents}
             onChange={handleFilterStudent}
           />
           <ul>

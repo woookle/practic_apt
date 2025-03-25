@@ -23,15 +23,14 @@ export const sendVerificationEmail = (email, code) => {
       <div style="max-width: 600px; width: 100%; margin: 0 auto; padding: 10px;">
         <!-- Header -->
         ${
-          config.company_logo_image && (
-            `<div style="text-align: center; padding-bottom: 20px;">
+          config.company_logo_image &&
+          `<div style="text-align: center; padding-bottom: 20px;">
               <img
-                src={${config.company_logo_image}}
+                src="${config.company_logo_image}"
                 alt="Logo"
                 style="width: 250px; max-width: 100%; height: auto;"
               />
             </div>`
-          )
         }
 
         <!-- Заголовок -->
@@ -86,16 +85,15 @@ export const sendRegistrationSuccessEmail = (email, username) => {
       <div style="max-width: 600px; width: 100%; margin: 0 auto; padding: 10px;">
         <!-- Header -->
                 ${
-          config.company_logo_image && (
-            `<div style="text-align: center; padding-bottom: 20px;">
+                  config.company_logo_image &&
+                  `<div style="text-align: center; padding-bottom: 20px;">
               <img
-                src={${config.company_logo_image}}
+                src="${config.company_logo_image}"
                 alt="Logo"
                 style="width: 250px; max-width: 100%; height: auto;"
               />
             </div>`
-          )
-        }
+                }
 
         <!-- Заголовок -->
         <h1 style="text-align: center; margin: 20px 0;">Добро пожаловать, ${username}!</h1>
@@ -105,7 +103,9 @@ export const sendRegistrationSuccessEmail = (email, username) => {
 
         <!-- Кнопка входа -->
         <div style="text-align: center; margin: 20px 0;">
-          <a href="${config.website_url}/login" style="display: inline-block; padding: 10px 20px; background-color: #fff; color: #000; font-weight: bold; text-decoration: none;">Войти в аккаунт</a>
+          <a href="${
+            config.website_url
+          }/login" style="display: inline-block; padding: 10px 20px; background-color: #fff; color: #000; font-weight: bold; text-decoration: none;">Войти в аккаунт</a>
         </div>
 
         <!-- Дополнительный текст -->
@@ -124,6 +124,112 @@ export const sendRegistrationSuccessEmail = (email, username) => {
     from: `${config.email_company_name} <${config.email_user}>`,
     to: email,
     subject: "Успешная регистрация",
+    html: htmlTemplate,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
+
+export const on2faAuth = (email, username) => {
+  const htmlTemplate = `
+  <!DOCTYPE html>
+  <html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Успешная регистрация</title>
+  </head>
+  <body style="margin: 0; padding: 20px 0; background-color: #000; color: #fff; font-family: sans-serif;">
+    <div style="max-width: 600px; width: 100%; margin: 0 auto; padding: 10px;">
+      <!-- Header -->
+              ${
+                config.company_logo_image &&
+                `<div style="text-align: center; padding-bottom: 20px;">
+            <img
+              src="${config.company_logo_image}"
+              alt="Logo"
+              style="width: 250px; max-width: 100%; height: auto;"
+            />
+          </div>`
+              }
+
+      <!-- Заголовок -->
+      <h1 style="text-align: center; margin: 20px 0;">Дорогой, ${username}!</h1>
+
+      <!-- Текст -->
+      <p style="text-align: center; margin: 10px 0;">На вашем аккаунте была включена двухэтапная аутентификация! Если это были не вы, то просим <a href="#" target="_blank">обратиться в нашу поддержку</a></p>
+
+      <!-- Footer -->
+      <div style="margin-top: 50px; text-align: center;">
+        <div>С уважением, <b>${config.email_company_name}</b></div>
+      </div>
+    </div>
+  </body>
+  </html>`;
+
+  const mailOptions = {
+    from: `${config.email_company_name} <${config.email_user}>`,
+    to: email,
+    subject: "Уведомление о безопасности",
+    html: htmlTemplate,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
+
+export const off2faAuth = (email, username) => {
+  const htmlTemplate = `
+  <!DOCTYPE html>
+  <html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Успешная регистрация</title>
+  </head>
+  <body style="margin: 0; padding: 20px 0; background-color: #000; color: #fff; font-family: sans-serif;">
+    <div style="max-width: 600px; width: 100%; margin: 0 auto; padding: 10px;">
+      <!-- Header -->
+              ${
+                config.company_logo_image &&
+                `<div style="text-align: center; padding-bottom: 20px;">
+            <img
+              src="${config.company_logo_image}"
+              alt="Logo"
+              style="width: 250px; max-width: 100%; height: auto;"
+            />
+          </div>`
+              }
+
+      <!-- Заголовок -->
+      <h1 style="text-align: center; margin: 20px 0;">Дорогой, ${username}!</h1>
+
+      <!-- Текст -->
+      <p style="text-align: center; margin: 10px 0;">На вашем аккаунте была отключена двухэтапная аутентификация! Если это были не вы, то просим <a href="#" target="_blank">обратиться в нашу поддержку</a></p>
+
+      <!-- Footer -->
+      <div style="margin-top: 50px; text-align: center;">
+        <div>С уважением, <b>${config.email_company_name}</b></div>
+      </div>
+    </div>
+  </body>
+  </html>`;
+
+  const mailOptions = {
+    from: `${config.email_company_name} <${config.email_user}>`,
+    to: email,
+    subject: "Уведомление о безопасности",
     html: htmlTemplate,
   };
 

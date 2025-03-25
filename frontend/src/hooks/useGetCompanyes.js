@@ -5,7 +5,7 @@ const useGetCompanyes = () => {
   const [isLoadCompanyes, setIsLoadCompanyes] = useState(false);
   const [companyes, setCompanyes] = useState([]);
   const [filteredCompanyes, setFilteredCompanyes] = useState([]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     async function findCompanyes() {
@@ -21,11 +21,11 @@ const useGetCompanyes = () => {
       }
     }
     findCompanyes();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
-      const filtered = companyes.filter(comp =>
+      const filtered = companyes.filter((comp) =>
         comp.name.toLowerCase().includes(filter.toLowerCase())
       );
       setFilteredCompanyes(filtered);
@@ -38,7 +38,7 @@ const useGetCompanyes = () => {
     setFilter(event.target.value);
   };
 
-  return { isLoadCompanyes, filteredCompanyes, handleFilterCompany };
+  return { isLoadCompanyes, filteredCompanyes, handleFilterCompany, filterComp: filter };
 };
 
 export default useGetCompanyes;

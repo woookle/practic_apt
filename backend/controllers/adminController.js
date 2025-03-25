@@ -1,5 +1,6 @@
 import Company from "../models/Company.js";
 import Group from "../models/Group.js";
+import Lesson from "../models/Lesson.js";
 import Practic from "../models/Practic.js";
 import Student from "../models/Student.js";
 import User from "../models/User.js";
@@ -344,6 +345,77 @@ class AdminController {
       return res.status(500).json({ message: error.message });
     }
   };
+
+    // ВЫДАТЬ ВСЕ УЧЕБНЫЕ ПРАКТИКИ
+    static getLessons = async (req, res) => {
+      try {
+        const lessons = await Lesson.find();
+  
+        return res.status(200).json({ lessons });
+      } catch (error) {
+        return res.status(500).json({ message: error.message });
+      }
+    };
+  
+    // СОЗДАТЬ УЧЕБНУЮ ПРАКТИКУ
+    static createLesson = async (req, res) => {
+      try {
+        const name = req.body.name;
+        const isHave = await Lesson.findOne({ name });
+        if (isHave) {
+          return res
+            .status(401)
+            .json({ message: "Такое название уже существует!" });
+        }
+        const lesson = new Lesson({
+          name,
+        });
+        await lesson.save();
+  
+        return res
+          .status(200)
+          .json({ message: "Учебный предмет успешно создан!" });
+      } catch (error) {
+        return res.status(500).json({ message: error.message });
+      }
+    };
+  
+    // ИЗМЕНИТЬ УЧЕБНУЮ ПРАКТИКУ
+    static changeLesson = async (req, res) => {
+      try {
+        const newName = req.body.name;
+        const id = req.params.id;
+        const isHave = await Lesson.find({ name: newName });
+        if (isHave) {
+          return res
+            .status(401)
+            .json({ message: "Такое название предмета уже используется!" });
+        }
+        const lesson = await Lesson.findById(id);
+        lesson.name = newName;
+        await lesson.save();
+  
+        return res
+          .status(200)
+          .json({ message: "Название предмета успешно обновлено!" });
+      } catch (error) {
+        return res.status(500).json({ message: error.message });
+      }
+    };
+  
+    // УДАЛИТЬ УЧЕБНЫЙ ПРЕДМЕТ
+    static deleteLesson = async (req, res) => {
+      try {
+        const id = req.params.id;
+        await Lesson.findByIdAndDelete(id);
+  
+        return res
+          .status(200)
+          .json({ message: "Учебный предмет успешно удален!" });
+      } catch (error) {
+        return res.status(500).json({ message: error.message });
+      }
+    };
 }
 
 export default AdminController;

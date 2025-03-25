@@ -4,8 +4,6 @@ const studentSchema = new mongoose.Schema({
   id: { type: Number, required: true },
   name: { type: String, required: true },
   group: { type: String, required: true },
-  isWork: { type: Boolean, required: true, default: false },
-  companyName: { type: String, required: true, default: "-" },
 });
 
 const documentDataSchema = new mongoose.Schema({

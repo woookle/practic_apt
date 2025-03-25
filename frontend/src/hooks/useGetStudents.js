@@ -5,7 +5,7 @@ const useGetStudents = () => {
   const [isLoadStudents, setIsLoadStudents] = useState(false);
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
   const findStudentByGroup = async (groupId) => {
     try {
@@ -22,7 +22,7 @@ const useGetStudents = () => {
 
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
-      const filtered = students.filter(student =>
+      const filtered = students.filter((student) =>
         student.name.toLowerCase().includes(filter.toLowerCase())
       );
       setFilteredStudents(filtered);
@@ -35,7 +35,13 @@ const useGetStudents = () => {
     setFilter(event.target.value);
   };
 
-  return { isLoadStudents, filteredStudents, findStudentByGroup, handleFilterStudent };
+  return {
+    isLoadStudents,
+    filteredStudents,
+    findStudentByGroup,
+    handleFilterStudent,
+    filterStudents: filter
+  };
 };
 
 export default useGetStudents;

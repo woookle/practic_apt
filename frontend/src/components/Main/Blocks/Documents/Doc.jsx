@@ -5,6 +5,7 @@ const Doc = ({ document, setIsOpen, setCurrentDoc }) => {
     <div className="doc">
       <div className="docInfo">
         <p className="docTitle">{document.title}</p>
+        <p>{document.group}</p>
         <p className="created">Создан: {FormatDate(document.createdAt)}</p>
       </div>
       <button type="button" onClick={() => { setCurrentDoc(document); setIsOpen(true) }}>Подробнее</button>

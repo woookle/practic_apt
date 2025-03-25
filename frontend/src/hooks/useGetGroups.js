@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { getGroups } from '../api/api';
+import { useState, useEffect } from "react";
+import { getGroups } from "../api/api";
 
 const useGetGroups = () => {
   const [isLoadGroups, setIsLoadGroups] = useState(false);
   const [groups, setGroups] = useState([]);
   const [sortedGroups, setSortedGroups] = useState([]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     async function getAllGroups() {
@@ -25,7 +25,7 @@ const useGetGroups = () => {
 
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
-      const filteredGroups = groups.filter(group =>
+      const filteredGroups = groups.filter((group) =>
         group.name.toLowerCase().includes(filter.toLowerCase())
       );
       setSortedGroups(filteredGroups);
@@ -38,7 +38,7 @@ const useGetGroups = () => {
     setFilter(event.target.value);
   };
 
-  return { isLoadGroups, sortedGroups, handleFilterGroup };
+  return { isLoadGroups, sortedGroups, handleFilterGroup, filterGroups: filter };
 };
 
 export default useGetGroups;

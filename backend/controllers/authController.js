@@ -8,6 +8,7 @@ import {
   startRegistration,
   completeRegistration,
 } from "../services/authService.js";
+import { off2faAuth, on2faAuth } from "../services/emailService.js";
 
 class AuthController {
   // НАЧАЛО РЕГИСТРАЦИИ
@@ -39,7 +40,7 @@ class AuthController {
       const token = jwt.sign(
         { _id: user._id, email: user.email },
         config.jwtSecret,
-        { expiresIn: "1h" }
+        { expiresIn: "30d" }
       );
       res.cookie("token", token, { httpOnly: true });
       res.status(200).json({ user, message: "Вы успешно зарегистрированы!" });
@@ -74,7 +75,7 @@ class AuthController {
       const token = jwt.sign(
         { _id: user._id, email: user.email },
         config.jwtSecret,
-        { expiresIn: "1h" }
+        { expiresIn: "30d" }
       );
       res.cookie("token", token, { httpOnly: true });
       return res.status(200).json({ user, message: "Вход успешно выполнен!" });
@@ -107,6 +108,7 @@ class AuthController {
             .status(500)
             .json({ message: "Ошибка при генерации QR-кода" });
         }
+        on2faAuth(user.email, user.username);
         return res.status(200).json({
           message:
             "Двухэтапная аутентификация успешно включена! Можете отсканировать qr-code или ввести код самостоятельно.",
@@ -134,6 +136,7 @@ class AuthController {
       user.secret = undefined;
       user.is2FAEnabled = false;
       await user.save();
+      off2faAuth(user.email, user.username);
       return res
         .status(200)
         .json({ message: "Двухэтапная аутентификация отключена" });

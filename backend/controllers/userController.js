@@ -55,7 +55,7 @@ class UserController {
       const newWordFile = new Document({
         file: file,
         data: dataContent,
-        group,
+        group: data.students[0].group,
         title,
       });
       await newWordFile.save();

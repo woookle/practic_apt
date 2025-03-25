@@ -35,8 +35,9 @@
 }
 .intro button {
   font-size: 32px;
+  font-size: 24px;
   font-weight: 800;
-  padding: 18px 70px;
+  padding: 15px 40px;
   background-color: #fff;
   border-radius: 10px;
   cursor: pointer;
@@ -607,9 +608,39 @@ footer .container .githubLink {
 .profile .avatar .changeAvatarBtn label {
   cursor: pointer;
 }
+.profile .faTxt {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile .faTxt .enable2FaButton {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.profile .faTxt .enable2FaButton:hover {
+  background-color: green;
+  border-color: transparent;
+  color: #fff;
+}
+.profile .faTxt .disable2FaButton {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.profile .faTxt .disable2FaButton:hover {
+  background-color: red;
+  border-color: transparent;
+  color: #fff;
+}
 .profile .usernameBlock {
   display: flex;
-  margin-top: 20px;
+  margin-top: 10px;
   gap: 10px;
   color: #000;
 }
@@ -718,6 +749,56 @@ footer .container .githubLink {
   border-color: transparent;
 }
 
+.on2faPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.on2faPopup .on2faContainer {
+  position: relative;
+  background-color: #fff;
+  padding: 35px 35px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  border-radius: 10px;
+}
+.on2faPopup .on2faContainer .closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.on2faPopup .on2faContainer h1 {
+  font-size: 24px;
+  text-align: center;
+}
+.on2faPopup .on2faContainer .qrCodeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.on2faPopup .on2faContainer .qrCodeBlock .qrCodeText {
+  text-align: center;
+}
+.on2faPopup .on2faContainer .codeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.on2faPopup .on2faContainer .codeBlock .code {
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+}
+
 .createDocumentBlock .container {
   padding: 50px 0;
 }
@@ -731,7 +812,7 @@ footer .container .githubLink {
   margin-bottom: 10px;
 }
 .createDocumentBlock .createDoc .titleInput input {
-  padding: 10px 20px;
+  padding: 10px;
   outline: none;
   border: 1px solid #000;
   width: 100%;
@@ -774,7 +855,7 @@ footer .container .githubLink {
 }
 .createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList {
   position: absolute;
-  z-index: 100;
+  z-index: 666;
   top: 100%;
   padding: 5px;
   background-color: #000;
@@ -784,6 +865,8 @@ footer .container .githubLink {
   outline: none;
   padding: 5px;
   margin-bottom: 5px;
+  width: 100%;
+  min-width: 200px;
 }
 .createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList ul {
   display: flex;
@@ -803,6 +886,61 @@ footer .container .githubLink {
   transition: all 0.3s ease;
 }
 .createDocumentBlock .createDoc .checkCompany .dropDownCompanyes .companyList ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.createDocumentBlock .createDoc .checkPractic {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.createDocumentBlock .createDoc .dropDownPractics {
+  position: relative;
+}
+.createDocumentBlock .createDoc .dropDownPractics .dropDownTitle {
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .dropDownPractics .dropDownTitle:hover {
+  background-color: #000;
+  color: #fff;
+}
+.createDocumentBlock .createDoc .dropDownPractics .practicList {
+  position: absolute;
+  top: 100%;
+  padding: 5px;
+  background-color: #000;
+  margin-top: 5px;
+  z-index: 666;
+}
+.createDocumentBlock .createDoc .dropDownPractics .practicList input {
+  outline: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  min-width: 200px;
+}
+.createDocumentBlock .createDoc .dropDownPractics .practicList ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  list-style-type: none;
+  color: #fff;
+  text-align: center;
+}
+.createDocumentBlock .createDoc .dropDownPractics .practicList ul li button {
+  width: 100%;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+.createDocumentBlock .createDoc .dropDownPractics .practicList ul li button:hover {
   background-color: rgba(255, 255, 255, 0.8);
 }
 .createDocumentBlock .createDoc .groupAndStudents {
@@ -827,16 +965,18 @@ footer .container .githubLink {
 }
 .createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList {
   position: absolute;
-  z-index: 100;
   top: 100%;
   padding: 5px;
   background-color: #000;
   margin-top: 5px;
+  z-index: 666;
 }
 .createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList input {
   outline: none;
   padding: 5px;
   margin-bottom: 5px;
+  width: 100%;
+  min-width: 200px;
 }
 .createDocumentBlock .createDoc .groupAndStudents .dropDownGroups .groupList ul {
   display: flex;
@@ -877,7 +1017,6 @@ footer .container .githubLink {
 }
 .createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .studentList {
   position: absolute;
-  z-index: 100;
   top: 100%;
   padding: 5px;
   background-color: #000;
@@ -887,6 +1026,8 @@ footer .container .githubLink {
   outline: none;
   padding: 5px;
   margin-bottom: 5px;
+  width: 100%;
+  min-width: 200px;
 }
 .createDocumentBlock .createDoc .groupAndStudents .dropDownStudents .studentList ul {
   display: flex;
@@ -964,6 +1105,10 @@ footer .container .githubLink {
   background-color: green;
   color: #fff;
   border-color: transparent;
+}
+.createDocumentBlock .createDoc .createBtn button:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: default;
 }
 
 body {

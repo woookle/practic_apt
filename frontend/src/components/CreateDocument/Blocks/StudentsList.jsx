@@ -1,6 +1,6 @@
 const StudentsList = ({ selectedStudents, removeStudent }) => {
   return (
-    <div className="studentsList animate__animated animate__fadeIn">
+    <div className="studentsList">
       {selectedStudents.length === 0 ? (
         <p>Вы не добавили студентов!</p>
       ) : (
