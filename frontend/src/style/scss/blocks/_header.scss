@@ -3,38 +3,150 @@ header {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #fff;
+  position: relative;
+  
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    
     .emblemaHeader {
       width: 97px;
     }
+    
     .headerAvatar {
       border-radius: 50%;
       transition: all 0.3s ease;
       border: 1px solid transparent;
+      display: block;
+      
       &:hover {
         border-color: #fff;
       }
     }
+    
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1001;
+      position: relative;
+      
+      span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: #fff;
+        transition: all 0.3s ease;
+        position: absolute;
+        left: 0;
+      }
+      
+      span:nth-child(1) {
+        top: 0;
+      }
+      
+      span:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      span:nth-child(3) {
+        bottom: 0;
+      }
+      
+      &.active {
+        span:nth-child(1) {
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+        }
+        
+        span:nth-child(2) {
+          opacity: 0;
+        }
+        
+        span:nth-child(3) {
+          top: 50%;
+          transform: translateY(-50%) rotate(-45deg);
+        }
+      }
+    }
+    
     .navLinks {
       list-style-type: none;
       display: flex;
       gap: 20px;
       font-weight: bold;
+      align-items: center;
+      
       li {
         cursor: pointer;
         border-bottom: 1px solid transparent;
         transition: all 0.3s ease;
+        
         a {
           text-decoration: none;
           color: #fff;
         }
+        
         &:hover {
           padding-bottom: 0;
           border-bottom-color: #fff;
         }
+      }
+      
+      .mobileAvatar {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    .container {
+      .burger {
+        display: flex;
+      }
+      
+      .navLinks {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #000;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transition: all 0.5s ease;
+        z-index: 1000;
+        
+        &.active {
+          right: 0;
+        }
+        
+        li {
+          font-size: 1.2rem;
+        }
+        
+        .mobileAvatar {
+          display: block;
+          margin-top: 20px;
+          border: 2px solid transparent;
+          border-radius: 50%;
+          &:hover {
+            border-color: #fff;
+          }
+        }
+      }
+      
+      .headerAvatar {
+        display: none;
       }
     }
   }

@@ -42,7 +42,12 @@ class AuthController {
         config.jwtSecret,
         { expiresIn: "30d" }
       );
-      res.cookie("token", token, { httpOnly: true });
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "Lax",
+        maxAge: 2592000000,
+      });
       res.status(200).json({ user, message: "Вы успешно зарегистрированы!" });
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -77,7 +82,12 @@ class AuthController {
         config.jwtSecret,
         { expiresIn: "30d" }
       );
-      res.cookie("token", token, { httpOnly: true });
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "Lax",
+        maxAge: 2592000000,
+      });
       return res.status(200).json({ user, message: "Вход успешно выполнен!" });
     } catch (error) {
       console.log(error);

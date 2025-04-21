@@ -1,5 +1,6 @@
 .profilePage {
   .container {
+    min-height: 100vh;
     max-width: 720px;
   }
 }
@@ -8,7 +9,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #fff;
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 20px;
   margin: 50px 0;
   .avatar {
     position: relative;
@@ -70,7 +73,7 @@
     display: flex;
     margin-top: 10px;
     gap: 10px;
-    color: #000;
+    color: #fff;
     .username {
       font-weight: bold;
       font-size: 24px;
@@ -96,14 +99,14 @@
     .changeUsernameBtn {
       padding: 5px 10px;
       background-color: transparent;
-      border: 1px solid #000;
+      border: 1px solid #fff;
       font-weight: bold;
-      color: #000;
+      color: #fff;
       cursor: pointer;
       transition: all 0.3s ease;
       &:hover {
-        background-color: #000;
-        color: #fff;
+        background-color: #fff;
+        color: #000;
       }
     }
   }
@@ -120,11 +123,12 @@
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 1px solid #000;
+    border: 1px solid #fff;
+    color: #fff;
     background-color: transparent;
     &:hover {
-      background-color: #000;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
     }
   }
 }

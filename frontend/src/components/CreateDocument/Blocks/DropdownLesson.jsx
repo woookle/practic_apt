@@ -5,8 +5,8 @@ const DropdownLesson = ({
   sortedLessons,
   handleFilterLesson,
   filterLesson,
-  selectedLesson,
-  setSelectedLesson,
+  selectedSpecialComponent,
+  setSelectedSpecialComponent,
   isOpenLesson,
   setIsOpenLesson,
   dropdownRef
@@ -23,7 +23,7 @@ const DropdownLesson = ({
           className="dropDownTitle"
           onClick={() => setIsOpenLesson(!isOpenLesson)}
         >
-          {selectedLesson === "" ? "Выберите учебный предмет" : selectedLesson}
+          {selectedSpecialComponent === "" ? "Выберите учебный предмет" : selectedSpecialComponent}
         </button>
       )}
       {isOpenLesson && (
@@ -45,7 +45,7 @@ const DropdownLesson = ({
                   <button
                     type="button"
                     onClick={() => {
-                      setSelectedLesson(lesson.name);
+                      setSelectedSpecialComponent(lesson.name);
                       setIsOpenLesson(false);
                     }}
                   >

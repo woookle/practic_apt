@@ -1,16 +1,16 @@
 import DropdownCompanyes from "./Blocks/DropdownCompanyes";
 import DropdownGroups from "./Blocks/DropdownGroups";
 import DropdownStudents from "./Blocks/DropdownStudents";
-import DropdownPractics from "./Blocks/DropdownPractics";
 import StudentsList from "./Blocks/StudentsList";
 import DropdownLesson from "./Blocks/DropdownLesson";
+import AddLessonModal from "./Blocks/AddLessonModal";
 
 const CreateDocument = ({
   isLoadStudents,
   filteredStudents,
-  findStudentByGroup,
   handleFilterStudent,
   isLoadGroups,
+  findStudentByGroup,
   sortedGroups,
   handleFilterGroup,
   isOpenGroup,
@@ -25,8 +25,6 @@ const CreateDocument = ({
   addStudent,
   removeStudent,
   setTitle,
-  setStartDate,
-  setEndDate,
   isLoadCompanyes,
   filteredCompanyes,
   handleFilterCompany,
@@ -36,6 +34,7 @@ const CreateDocument = ({
   setIsOpenCompany,
   dropdownRef,
   filterComp,
+  setCourse,
   filterGroups,
   filterStudents,
   isLoadPractics,
@@ -46,10 +45,6 @@ const CreateDocument = ({
   setSelectedPractic,
   isOpenPractic,
   setIsOpenPractic,
-  selectedTwoPractic,
-  setSelectedTwoPractic,
-  isOpenTwoPractic,
-  setIsOpenTwoPractic,
   isLoadLessons,
   sortedLessons,
   handleFilterLesson,
@@ -58,13 +53,20 @@ const CreateDocument = ({
   setSelectedLesson,
   isOpenLesson,
   setIsOpenLesson,
-  setStartTwoDate,
-  setEndTwoDate,
-  setCourse,
   setNumber,
   setNumberDate,
   createDocument,
-  isCreatingDocument
+  isCreatingDocument,
+  lessons,
+  setIsOpenModal,
+  isOpenModal,
+  handleAddNewLesson,
+  setStartTwoDate, 
+  setEndTwoDate,
+  deleteLesson,
+  setAddress,
+  setSelectedSpecialComponent,
+  selectedSpecialComponent
 }) => {
   return (
     <div className="createDoc">
@@ -81,35 +83,22 @@ const CreateDocument = ({
       <div className="dateInputs">
         <div>
           <p>Введите номер документа:</p>
-          <input type="text" placeholder="Введите номер документа" onChange={(txt) => setNumber(txt.target.value)} />
+          <input
+            type="text"
+            placeholder="Введите номер документа"
+            onChange={(txt) => setNumber(txt.target.value)}
+          />
         </div>
         <div>
           <p>Введите дату</p>
-          <input type="date" onChange={(dt) => setNumberDate(dt.target.value)} />
+          <input
+            type="date"
+            onChange={(dt) => setNumberDate(dt.target.value)}
+          />
         </div>
-      </div>
-      <div className="dateInputs">
-        <div>
-          <p>От</p>
-          <input type="date" onChange={(dt) => setStartDate(dt.target.value)} />
-        </div>
-        <div>
-          <p>До</p>
-          <input type="date" onChange={(dt) => setEndDate(dt.target.value)} />
-        </div>
-      </div>
-      <div className="dateInputs">
-        <div>
-          <p>От</p>
-          <input type="date" onChange={(dt) => setStartTwoDate(dt.target.value)} />
-        </div>
-        <div>
-          <p>До</p>
-          <input type="date" onChange={(dt) => setEndTwoDate(dt.target.value)} />
-        </div>
-      </div>
+      </div>  
       <div className="checkCompany">
-        <p>Выберите организацию:</p>
+        <p>Выберите компанию:</p>
         <DropdownCompanyes
           isLoadCompanyes={isLoadCompanyes}
           filteredCompanyes={filteredCompanyes}
@@ -120,49 +109,38 @@ const CreateDocument = ({
           setIsOpenCompany={setIsOpenCompany}
           dropdownRef={dropdownRef}
           filterComp={filterComp}
+          setAddress={setAddress}
         />
       </div>
       <div className="checkCompany">
-        <p>Выберите учебный предмет:</p>
+        <p>Выберите специальность:</p>
         <DropdownLesson
           isLoadLessons={isLoadLessons}
           sortedLessons={sortedLessons}
           handleFilterLesson={handleFilterLesson}
           filterLesson={filterLesson}
-          selectedLesson={selectedLesson}
-          setSelectedLesson={setSelectedLesson}
+          selectedSpecialComponent={selectedSpecialComponent}
+          setSelectedSpecialComponent={setSelectedSpecialComponent}
           isOpenLesson={isOpenLesson}
           setIsOpenLesson={setIsOpenLesson}
           dropdownRef={dropdownRef}
         />
       </div>
-      <div className="checkPractic">
-        <p>Выберите практику:</p>
-        <DropdownPractics
-          dropdownRef={dropdownRef}
-          isLoadPractics={isLoadPractics}
-          sortedPractics={sortedPractics}
-          handleFilterPractic={handleFilterPractic}
-          filterPractic={filterPractic}
-          selectedPractic={selectedPractic}
-          setSelectedPractic={setSelectedPractic}
-          isOpenPractic={isOpenPractic}
-          setIsOpenPractic={setIsOpenPractic}
-        />
-      </div>
-      <div className="checkPractic">
-        <p>Выберите вторую практику:</p>
-        <DropdownPractics
-          dropdownRef={dropdownRef}
-          isLoadPractics={isLoadPractics}
-          sortedPractics={sortedPractics}
-          handleFilterPractic={handleFilterPractic}
-          filterPractic={filterPractic}
-          selectedPractic={selectedTwoPractic}
-          setSelectedPractic={setSelectedTwoPractic}
-          isOpenPractic={isOpenTwoPractic}
-          setIsOpenPractic={setIsOpenTwoPractic}
-        />
+      <div className="lessonsList">
+        <div className="lessonContainer">
+        { lessons.length === 0 ? <p>Вы не добавили учебные предметы!</p> : lessons.map((les, key) => (
+          <div className="lessonBlock" key={key}>
+            {les.lessonName} ({les.dateFromAndTo}) 
+            <button type="button" onClick={() => deleteLesson(key)}>Удалить</button>
+          </div>
+        )) }
+        </div>
+        <div className="addNewLessonButton">
+          Добавить учебные предметы
+        <button type="button" className="addNewLesson" onClick={() => setIsOpenModal(true)}>
+          +
+        </button>
+        </div>
       </div>
       <div className="groupAndStudents">
         <DropdownGroups
@@ -173,10 +151,10 @@ const CreateDocument = ({
           handleFilterGroup={handleFilterGroup}
           selectedGroup={selectedGroup}
           setSelectedGroup={setSelectedGroup}
-          findStudentByGroup={findStudentByGroup}
           setSelectedStudent={setSelectedStudent}
           dropdownRef={dropdownRef}
           filterGroups={filterGroups}
+          findStudentByGroup={findStudentByGroup}
           setCourse={setCourse}
         />
         <DropdownStudents
@@ -200,8 +178,30 @@ const CreateDocument = ({
         removeStudent={removeStudent}
       />
       <div className="createBtn animate__animated animate__fadeInRight">
-        <button type="button" onClick={createDocument} disabled={isCreatingDocument}>Создать</button>
+        <button
+          type="button"
+          onClick={createDocument}
+          disabled={isCreatingDocument}
+        >
+          Создать
+        </button>
       </div>
+
+      {isOpenModal && <AddLessonModal 
+        handleAddNewLesson={handleAddNewLesson} 
+        isOpenPractic={isOpenPractic} 
+        setIsOpenPractic={setIsOpenPractic} 
+        isLoadPractics={isLoadPractics} 
+        sortedPractics={sortedPractics} 
+        handleFilterPractic={handleFilterPractic} 
+        filterPractic={filterPractic} 
+        selectedPractic={selectedPractic} 
+        setSelectedPractic={setSelectedPractic} 
+        dropdownRef={dropdownRef}
+        setStartTwoDate={setStartTwoDate} 
+        setEndTwoDate={setEndTwoDate} 
+        setIsOpenModal={setIsOpenModal}
+      />}
     </div>
   );
 };

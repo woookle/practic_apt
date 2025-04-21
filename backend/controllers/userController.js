@@ -71,6 +71,49 @@ class UserController {
     }
   };
 
+  // УДАЛИТЬ ДОКУМЕНТ
+  static deleteDocument = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = req.user;
+
+      const document = await Document.findById(id);
+
+      if (!document) {
+        return res.status(404).json({ message: "Документ не найден" });
+      }
+
+      const userHasDocument = user.documents.includes(document._id);
+
+      if (!userHasDocument) {
+        return res
+          .status(403)
+          .json({ message: "Нет прав для удаления этого документа" });
+      }
+
+      const filePath = path.resolve(__dirname, document.file);
+
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+
+      await Document.deleteOne({ _id: id });
+
+      user.documents = user.documents.filter(
+        (docId) => docId.toString() !== id
+      );
+      await user.save();
+
+      return res.status(200).json({ message: "Документ успешно удален", documentId: id });
+    } catch (error) {
+      console.error("Ошибка при удалении документа:", error);
+      res.status(500).json({
+        message: "Произошла ошибка при удалении документа",
+        error: error.message,
+      });
+    }
+  };
+
   // СКАЧИВАНИЕ ДОКУМЕНТА
   static downloadDocument = async (req, res) => {
     try {

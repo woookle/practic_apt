@@ -10,6 +10,7 @@
 @import "./blocks/footer";
 @import "./blocks/profile";
 @import "./blocks/document";
+@import "./blocks/admin-page";
 
 body {
   min-height: 100vh;
@@ -21,4 +22,7 @@ body {
   max-width: 1240px;
   width: 100%;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 }

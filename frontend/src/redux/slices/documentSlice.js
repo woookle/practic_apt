@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMyDocuments } from "../../api/api";
+import { deleteDocument, getMyDocuments } from "../../api/api";
 
 const initialState = {
   documents: [],
@@ -51,6 +51,22 @@ export const documentSlice = createSlice({
         state.sortedDocuments = action.payload;
       })
       .addCase(getMyDocuments.rejected, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(deleteDocument.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteDocument.fulfilled, (state, action) => {
+        state.loading = false;
+        state.documents = state.documents.filter(
+          (doc) => doc._id !== action.payload.documentId
+        );
+        state.sortedDocuments = state.sortedDocuments.filter(
+          (doc) => doc._id !== action.payload.documentId
+        );
+      })
+      .addCase(deleteDocument.rejected, (state, action) => {
         state.loading = false;
       });
   },

@@ -211,18 +211,18 @@ export const getMyDocuments = createAsyncThunk(
 
 // УДАЛИТЬ ДОКУМЕНТ
 export const deleteDocument = createAsyncThunk(
-  "user/documents/delete",
+  "documents/deleteDocument",
   async (id, { rejectWithValue }) => {
     try {
       const response = await instance.delete('/user/documents/' + id);
       toast.success(response.data.message);
-      return id;
+      return { documentId: id };
     } catch (error) {
       toast.error("Ошибка при удалении документа!");
-      return rejectWithValue(error.response.data)
+      return rejectWithValue(error.response.data);
     }
   }
-)
+);
 
 // СКАЧАТЬ ДОКУМЕНТ ПО АЙДИ
 export const downloadDocumentById = async (documentId) => {

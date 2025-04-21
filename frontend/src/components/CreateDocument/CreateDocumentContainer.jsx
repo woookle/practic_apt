@@ -12,20 +12,35 @@ import { uploadDocument } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
 const CreateDocumentContainer = () => {
-  const { isLoadStudents, filteredStudents, findStudentByGroup, handleFilterStudent, filterStudents } = useGetStudents();
-  const { isLoadGroups, sortedGroups, handleFilterGroup, filterGroups } = useGetGroups();
-  const {isLoadCompanyes, filteredCompanyes, handleFilterCompany, filterComp} = useGetCompanyes();
-  const { isLoadPractics, sortedPractics, handleFilterPractic, filterPractic } = useGetPractics();
-  const { isLoadLessons, sortedLessons, handleFilterLesson, filterLesson } = useGetLessons();
+  const {
+    isLoadStudents,
+    filteredStudents,
+    findStudentByGroup,
+    handleFilterStudent,
+    filterStudents,
+  } = useGetStudents();
+  const { isLoadGroups, sortedGroups, handleFilterGroup, filterGroups } =
+    useGetGroups();
+  const {
+    isLoadCompanyes,
+    filteredCompanyes,
+    handleFilterCompany,
+    filterComp,
+  } = useGetCompanyes();
+  const { isLoadPractics, sortedPractics, handleFilterPractic, filterPractic } =
+    useGetPractics();
+  const { isLoadLessons, sortedLessons, handleFilterLesson, filterLesson } =
+    useGetLessons();
 
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
+  const [lessons, setLessons] = useState([]);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenGroup, setIsOpenGroup] = useState(false);
   const [isOpenStudent, setIsOpenStudent] = useState(false);
   const [isOpenCompany, setIsOpenCompany] = useState(false);
   const [isOpenPractic, setIsOpenPractic] = useState(false);
-  const [isOpenTwoPractic, setIsOpenTwoPractic] = useState(false);
   const [isOpenLesson, setIsOpenLesson] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState("");
   const [selectedStudent, setSelectedStudent] = useState("");
@@ -37,14 +52,15 @@ const CreateDocumentContainer = () => {
   const [startTwoDate, setStartTwoDate] = useState("");
   const [endTwoDate, setEndTwoDate] = useState("");
   const [course, setCourse] = useState("");
-  
+
   const [number, setNumber] = useState("");
   const [numberDate, setNumberDate] = useState("");
 
   const [selectedCompany, setSelectedCompany] = useState("");
+  const [address, setAddress] = useState("");
   const [selectedPractic, setSelectedPractic] = useState("");
-  const [selectedTwoPractic, setSelectedTwoPractic] = useState("");
   const [selectedLesson, setSelectedLesson] = useState("");
+  const [selectedSpecialComponent, setSelectedSpecialComponent] = useState("");
 
   const [isCreatingDocument, setIsCreatingDocument] = useState(false);
 
@@ -61,20 +77,44 @@ const CreateDocumentContainer = () => {
     } else {
       setSelectedStudents([
         ...selectedStudents,
-        { id: (selectedStudents.length + 1).toString(), name: selectedStudent, group: selectedGroup },
+        {
+          id: (selectedStudents.length + 1).toString(),
+          name: selectedStudent,
+          group: selectedGroup,
+        },
       ]);
-      toast.success("Студент успешно добавлен");
     }
   };
 
   const removeStudent = (studentToRemove) => {
     setSelectedStudents(
-      selectedStudents.filter(
-        (student) =>
-          student.name !== studentToRemove
-      )
+      selectedStudents.filter((student) => student.name !== studentToRemove)
     );
     toast.success("Студент удален из списка");
+  };
+
+  const handleAddNewLesson = () => {
+    if (selectedPractic && startTwoDate && endTwoDate) {
+      setLessons([
+        ...lessons,
+        {
+          lessonName: selectedPractic,
+          dateFromAndTo: `${FormatPracticDate(
+            startTwoDate
+          )} по ${FormatPracticDate(endTwoDate)}`,
+        },
+      ]);
+      setSelectedPractic("");
+      setStartTwoDate("");
+      setEndTwoDate("");
+      setIsOpenModal(false);
+    } else {
+      toast.error("Пожалуйста, заполните все поля");
+    }
+  };
+
+  const deleteLesson = (index) => {
+    setLessons(lessons.filter((lesson, i) => i !== index));
   };
 
   const createDocument = async () => {
@@ -83,51 +123,52 @@ const CreateDocumentContainer = () => {
         title,
         numberDate,
         number,
-        startDate,
-        endDate,
-        startTwoDate,
-        endTwoDate,
         selectedCompany,
-        selectedLesson,
-        selectedPractic,
-        selectedTwoPractic,
         course,
-        selectedStudents
+        selectedStudents,
+        lessons,
       };
-
+      
       const isAnyFieldEmpty = Object.values(requiredFields).some(
-        (value) => value === undefined || value === null || value === '' || (Array.isArray(value) && value.length === 0)
+        (value) =>
+          value === undefined ||
+          value === null ||
+          value === "" ||
+          (Array.isArray(value) && value.length === 0)
       );
-  
+
       if (isAnyFieldEmpty) {
-        toast.info('Заполните все поля!');
+        toast.info("Заполните все поля!");
         return false;
       }
-  
+
       setIsCreatingDocument(true);
       const data = {
         title: title,
         data: {
-          dateAndNumber: `${FormatDocumentDate(numberDate)} ${number}`,
-          dateFromAndTo: `${FormatPracticDate(startDate)} по ${FormatPracticDate(endDate)}`,
-          practicDateFromAndTo: `${FormatPracticDate(startTwoDate)} по ${FormatPracticDate(endTwoDate)}`,
-          companyName: selectedCompany,
+          number: "№" + number,
+          dateAndNumber: `${FormatDocumentDate(numberDate)} №${number}`,
+          dateFromAndTo: `${FormatPracticDate(
+            startDate
+          )} по ${FormatPracticDate(endDate)}`,
           lesson: selectedLesson,
-          practicName: selectedPractic,
-          practicNameComponent: selectedTwoPractic,
+          companyName: selectedCompany,
+          companyAddress: address,
+          practicNameComponent: selectedSpecialComponent,
           course: course,
           students: selectedStudents,
-        }
-      }
-  
+          lessons: lessons,
+        },
+      };
+
       await uploadDocument(data);
-      navigate('/main');
+      navigate("/main");
     } catch (error) {
       return false;
     } finally {
       setIsCreatingDocument(false);
     }
-  }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -136,7 +177,6 @@ const CreateDocumentContainer = () => {
         setIsOpenStudent(false);
         setIsOpenCompany(false);
         setIsOpenPractic(false);
-        setIsOpenTwoPractic(false);
         setIsOpenLesson(false);
       }
     };
@@ -145,16 +185,22 @@ const CreateDocumentContainer = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [setIsOpenCompany, setIsOpenGroup, setIsOpenStudent, setIsOpenPractic, setIsOpenTwoPractic, setIsOpenLesson]);
+  }, [
+    setIsOpenCompany,
+    setIsOpenGroup,
+    setIsOpenStudent,
+    setIsOpenPractic,
+    setIsOpenLesson,
+  ]);
 
   const createDocumentProps = {
     isLoadStudents,
     filteredStudents,
-    findStudentByGroup,
     handleFilterStudent,
     isLoadGroups,
     sortedGroups,
     handleFilterGroup,
+    findStudentByGroup,
     isOpenGroup,
     setIsOpenGroup,
     isOpenStudent,
@@ -170,8 +216,6 @@ const CreateDocumentContainer = () => {
     setTitle,
     setStartDate,
     setEndDate,
-    setStartTwoDate,
-    setEndTwoDate,
 
     isLoadCompanyes,
     filteredCompanyes,
@@ -183,7 +227,7 @@ const CreateDocumentContainer = () => {
     dropdownRef,
     filterComp,
     setCourse,
-    
+
     filterGroups,
     filterStudents,
 
@@ -196,11 +240,6 @@ const CreateDocumentContainer = () => {
     isOpenPractic,
     setIsOpenPractic,
 
-    selectedTwoPractic,
-    setSelectedTwoPractic,
-    isOpenTwoPractic,
-    setIsOpenTwoPractic,
-
     isLoadLessons,
     sortedLessons,
     handleFilterLesson,
@@ -212,9 +251,20 @@ const CreateDocumentContainer = () => {
 
     setNumber,
     setNumberDate,
-    
+
     createDocument,
-    isCreatingDocument
+    isCreatingDocument,
+
+    lessons,
+    setIsOpenModal,
+    isOpenModal,
+    handleAddNewLesson,
+    setStartTwoDate,
+    setEndTwoDate,
+    deleteLesson,
+    setAddress,
+    setSelectedSpecialComponent,
+    selectedSpecialComponent
   };
 
   return (

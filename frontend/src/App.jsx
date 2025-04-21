@@ -11,6 +11,7 @@ import FooterContainer from "./components/Footer/FooterContainer";
 import ProfilePage from "./pages/ProfilePage";
 import DynamicTitle from "./components/common/utils/DynamicTitle";
 import CreateDocPage from "./pages/CreateDocPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   const isAuth = useSelector((state) => state.auth.user);
@@ -34,6 +35,9 @@ function App() {
       <Route path="/main" element={!isAuth ? <Navigate to={"/"} /> : <MainPage />} />
       <Route path="/profile" element={!isAuth ? <Navigate to={"/"} /> : <ProfilePage />} />
       <Route path="/create" element={!isAuth ? <Navigate to={"/"} /> : <CreateDocPage />} />
+
+      {/* ADMIN ROUTE */}
+      <Route path="/admin" element={ isAuth ? isAuth.role === 'admin' ? <AdminPage /> : <Navigate to={"/main"} /> : <Navigate to={'/'} /> } />
     </Routes>
     { isAuth && <FooterContainer /> }
     <DynamicTitle />

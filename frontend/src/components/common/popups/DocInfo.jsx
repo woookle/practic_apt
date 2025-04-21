@@ -2,6 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FormatDate from "../../../utils/FormatDate";
 import DownloadDocumentButton from "../../Main/Blocks/Documents/DownloadDocumentButton";
+import DeleteDocumentButton from "../../Main/Blocks/Documents/DeleteDocumentButton";
 
 const DocInfo = ({ isOpen, document, setIsOpen, setCurrentDoc }) => {
   if (isOpen) {
@@ -25,6 +26,7 @@ const DocInfo = ({ isOpen, document, setIsOpen, setCurrentDoc }) => {
             <DownloadDocumentButton title={document.title} group={document.group} documentId={document._id} />
             <button type="button" className="closeBtn" onClick={() => {setCurrentDoc([]); setIsOpen(false)}}>Закрыть</button>
           </div>
+          <DeleteDocumentButton documentId={document._id} setIsOpen={setIsOpen} />
         </div>
       </div>
     );

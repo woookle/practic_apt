@@ -9,7 +9,8 @@ const DropdownCompanyes = ({
   isOpenCompany,
   setIsOpenCompany,
   dropdownRef,
-  filterComp
+  filterComp,
+  setAddress
 }) => {
   return (
     <div className="dropDownCompanyes">
@@ -45,6 +46,7 @@ const DropdownCompanyes = ({
                     type="button"
                     onClick={() => {
                       setSelectedCompany(comp.name);
+                      setAddress(comp.address)
                       setIsOpenCompany(false);
                     }}
                   >

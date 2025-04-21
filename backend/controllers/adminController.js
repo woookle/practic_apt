@@ -295,13 +295,14 @@ class AdminController {
   // СОЗДАТЬ КОМПАНИЮ
   static createCompany = async (req, res) => {
     try {
-      const name = req.body.name;
+      const { name, address } = req.body;
       const isHave = await Company.findOne({ name });
       if (isHave) {
         return res.status(401).json({ message: "Такая компания уже есть!" });
       }
       const comp = new Company({
         name,
+        address
       });
       await comp.save();
 
@@ -315,15 +316,17 @@ class AdminController {
   static changeCompany = async (req, res) => {
     try {
       const newName = req.body.name;
+      const newAddress = req.body.address;
       const id = req.params.id;
-      const isHave = await Company.find({ name: newName });
-      if (isHave) {
+      const isHave = await Company.findOne({ name: newName });
+      if (isHave && isHave.address === newAddress) {
         return res
           .status(401)
           .json({ message: "Такое название уже используется!" });
       }
       const comp = await Company.findById(id);
       comp.name = newName;
+      comp.address = newAddress;
       await comp.save();
 
       return res
