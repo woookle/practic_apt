@@ -51,7 +51,7 @@ const Companies = () => {
               />
               </>
             ) : (
-              company.name + " | " + company.address
+              <p style={{ width: "500px" }}>{company.name} | {company.address}</p>
             )}
             {editCompanyId === company._id ? (
               <button className="button" onClick={() => handleEditCompany(company._id)}>Сохранить</button>

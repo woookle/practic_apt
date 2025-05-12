@@ -42,7 +42,7 @@ const Lessons = () => {
                 onChange={(e) => setEditLessonName(e.target.value)}
               />
             ) : (
-              lesson.name
+              <p style={{ width: "600px" }}>{lesson.name}</p>
             )}
             {editLessonId === lesson._id ? (
               <button className="button" onClick={() => handleEditLesson(lesson._id)}>Сохранить</button>

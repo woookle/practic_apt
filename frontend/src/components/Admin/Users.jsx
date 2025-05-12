@@ -35,7 +35,7 @@ const Users = () => {
                 onChange={(e) => setEditUsername(e.target.value)}
               />
             ) : (
-              user.username
+              <p style={{ width: "250px" }}>{user.username}</p>
             )}
             {editUserId === user._id ? (
               <button className="button" onClick={() => handleEditUser(user._id)}>Сохранить</button>

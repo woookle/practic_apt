@@ -922,12 +922,14 @@ footer .container .githubLink {
   border: none;
   font-weight: bold;
   cursor: pointer;
+  color: #fff;
+  border: 1px solid #fff;
   transition: all 0.3s ease;
 }
 .profile .usernameBlock .saveNewUsername:hover {
   background-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
 }
 .profile .usernameBlock .changeUsernameBtn {
   padding: 5px 10px;
@@ -1509,11 +1511,180 @@ footer .container .githubLink {
   margin-bottom: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-.admin-page .section-title {
+.admin-page .section .section-title {
   color: #4caf50;
   margin-top: 0;
   margin-bottom: 15px;
   font-size: 1.5rem;
+}
+.admin-page .section .mode-switcher {
+  display: flex;
+  margin-bottom: 20px;
+}
+.admin-page .section .mode-switcher button {
+  padding: 8px 16px;
+  background-color: #333;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+}
+.admin-page .section .mode-switcher button:hover {
+  background-color: #3a3a3a;
+}
+.admin-page .section .mode-switcher button.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+.admin-page .section .mode-switcher button:last-child {
+  border-radius: 0 4px 4px 0;
+  border-left: 1px solid #444;
+}
+.admin-page .section .student-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.admin-page .section .student-form input[type=text],
+.admin-page .section .student-form select {
+  padding: 8px 12px;
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.admin-page .section .student-form button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.admin-page .section .student-form button:hover {
+  background-color: #45a049;
+}
+.admin-page .section .import-section {
+  margin-bottom: 15px;
+}
+.admin-page .section .import-section .import-section-top {
+  display: flex;
+  align-items: center;
+}
+.admin-page .section .import-section .group-select select {
+  padding: 8px 12px;
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  width: 200px;
+}
+.admin-page .section .import-section .preview-section {
+  margin-top: 20px;
+}
+.admin-page .section .import-section .preview-section h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.admin-page .section .import-section .preview-section .preview-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+.admin-page .section .import-section .preview-section .preview-list li {
+  padding: 8px;
+  background-color: #333;
+  border-bottom: 1px solid #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  box-sizing: border-box;
+}
+.admin-page .section .import-section .preview-section .preview-list li:last-child {
+  border-bottom: none;
+}
+.admin-page .section .import-section .preview-section .preview-list li span {
+  flex: 1;
+}
+.admin-page .section .import-section .preview-section .preview-list li button {
+  background-color: #ff4444;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+  flex: 0.2;
+}
+.admin-page .section .import-section .preview-section .preview-list li button:hover {
+  background-color: #ff5555;
+}
+.admin-page .section .import-section .preview-section button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.admin-page .section .import-section .preview-section button:hover {
+  background-color: #45a049;
+}
+.admin-page .section .students-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-page .section .students-list li {
+  padding: 12px;
+  background-color: #333;
+  border-bottom: 1px solid #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  box-sizing: border-box;
+}
+.admin-page .section .students-list li:last-child {
+  border-bottom: none;
+}
+.admin-page .section .students-list li span {
+  flex: 1;
+}
+.admin-page .section .students-list li span:nth-child(2) {
+  text-align: center;
+  flex: 0.5;
+}
+.admin-page .section .students-list li input[type=text],
+.admin-page .section .students-list li select {
+  padding: 4px 8px;
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  margin-right: 8px;
+  flex: 1;
+}
+.admin-page .section .students-list li button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+  flex: 0.2;
+}
+.admin-page .section .students-list li button:last-child {
+  background-color: #ff4444;
+}
+.admin-page .section .students-list li button:last-child:hover {
+  background-color: #ff5555;
+}
+.admin-page .section .students-list li button:hover {
+  background-color: #45a049;
 }
 .admin-page .list {
   list-style: none;
@@ -1557,7 +1728,6 @@ footer .container .githubLink {
   border: 1px solid #444;
   border-radius: 4px;
   margin-right: 8px;
-  width: 200px;
 }
 .admin-page input[type=text]:focus,
 .admin-page select:focus {
@@ -1579,6 +1749,9 @@ footer .container .githubLink {
     flex-direction: column;
     align-items: flex-start;
   }
+  .list-item p {
+    width: auto !important;
+  }
   .button {
     margin: 5px 5px 0 0;
   }
@@ -1587,15 +1760,30 @@ footer .container .githubLink {
     width: 100%;
     margin-bottom: 10px;
   }
+  .admin-page .section .mode-switcher {
+    flex-direction: column;
+  }
+  .admin-page .section .mode-switcher button {
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .admin-page .section .student-form {
+    flex-direction: column;
+  }
+  .admin-page .section .student-form input[type=text],
+  .admin-page .section .student-form select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 @media (max-width: 480px) {
   .admin-page {
     padding: 10px;
   }
-  .section {
+  .admin-page .section {
     padding: 15px;
   }
-  .section-title {
+  .admin-page .section .section-title {
     font-size: 1.3rem;
   }
 }

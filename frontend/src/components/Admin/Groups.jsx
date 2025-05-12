@@ -4,6 +4,7 @@ import { getGroups, createGroup, changeGroup, deleteGroup } from '../../api/admi
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [newGroupName, setNewGroupName] = useState('');
+  const [newCourse, setNewCourse] = useState('');
   const [editGroupId, setEditGroupId] = useState(null);
   const [editGroupName, setEditGroupName] = useState('');
 
@@ -42,7 +43,7 @@ const Groups = () => {
                 onChange={(e) => setEditGroupName(e.target.value)}
               />
             ) : (
-              group.name
+              <p style={{ width: "250px" }}>{group.name}</p>
             )}
             {editGroupId === group._id ? (
               <button className="button" onClick={() => handleEditGroup(group._id)}>Сохранить</button>
@@ -58,6 +59,12 @@ const Groups = () => {
         value={newGroupName}
         onChange={(e) => setNewGroupName(e.target.value)}
         placeholder="Новая группа"
+      />
+      <input
+        type="text"
+        value={newCourse}
+        onChange={(e) => setNewCourse(e.target.value)}
+        placeholder="Курс"
       />
       <button className="button" onClick={handleCreateGroup}>Создать</button>
     </div>

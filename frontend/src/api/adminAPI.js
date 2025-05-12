@@ -19,6 +19,9 @@ export const getGroups = async () => {
 
 export const createGroup = async (groupData) => {
   try {
+    if(!groupData.name || !groupData.course) {
+      toast.info('Заполните все поля!')
+    }
     const response = await instance.post("/group", groupData);
     toast.success(response.data.message);
     return response.data.group;

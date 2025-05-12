@@ -89,11 +89,13 @@
       border: none;
       font-weight: bold;
       cursor: pointer;
+      color: #fff;
+      border: 1px solid #fff;
       transition: all 0.3s ease;
       &:hover {
         background-color: rgba($color: #fff, $alpha: 0.5);
-        color: #fff;
-        background-color: #000;
+        color: #000;
+        background-color: #fff;
       }
     }
     .changeUsernameBtn {
