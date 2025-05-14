@@ -13,6 +13,8 @@ const Students = () => {
   const [importMode, setImportMode] = useState(false);
   const [file, setFile] = useState(null);
   const [previewStudents, setPreviewStudents] = useState([]);
+  const [editingPreviewIndex, setEditingPreviewIndex] = useState(null);
+  const [editPreviewName, setEditPreviewName] = useState('');
 
   useEffect(() => {
     loadData();
@@ -91,6 +93,21 @@ const Students = () => {
     setPreviewStudents(previewStudents.filter((_, i) => i !== index));
   };
 
+  const startEditingPreview = (index) => {
+    setEditingPreviewIndex(index);
+    setEditPreviewName(previewStudents[index].name);
+  };
+
+  const savePreviewEdit = () => {
+    const updated = [...previewStudents];
+    updated[editingPreviewIndex] = {
+      ...updated[editingPreviewIndex],
+      name: editPreviewName
+    };
+    setPreviewStudents(updated);
+    setEditingPreviewIndex(null);
+  };
+
   return (
     <div className="section">
       <h2 className="section-title">Студенты</h2>
@@ -132,23 +149,23 @@ const Students = () => {
       ) : (
         <div className="import-section">
           <div className="import-section-top">
-          <div className="group-select">
-            <select
-              value={newStudentGroup}
-              onChange={(e) => setNewStudentGroup(e.target.value)}
-            >
-              <option value="">Выберите группу</option>
-              {groups.map(group => (
-                <option key={group._id} value={group._id}>{group.name}</option>
-              ))}
-            </select>
-          </div>
-          
-          <input 
-            type="file" 
-            accept=".xlsx, .xls" 
-            onChange={handleFileUpload} 
-          />
+            <div className="group-select">
+              <select
+                value={newStudentGroup}
+                onChange={(e) => setNewStudentGroup(e.target.value)}
+              >
+                <option value="">Выберите группу</option>
+                {groups.map(group => (
+                  <option key={group._id} value={group._id}>{group.name}</option>
+                ))}
+              </select>
+            </div>
+            
+            <input 
+              type="file" 
+              accept=".xlsx, .xls" 
+              onChange={handleFileUpload} 
+            />
           </div>
           
           {previewStudents.length > 0 && (
@@ -157,8 +174,21 @@ const Students = () => {
               <ul className="preview-list">
                 {previewStudents.map((student, index) => (
                   <li key={index}>
-                    <p>{student.name}</p>
-                    <button onClick={() => removeFromPreview(index)}>×</button>
+                    {editingPreviewIndex === index ? (
+                      <>
+                        <input
+                          value={editPreviewName}
+                          onChange={(e) => setEditPreviewName(e.target.value)}
+                        />
+                        <button onClick={savePreviewEdit}>✓</button>
+                      </>
+                    ) : (
+                      <>
+                        <p>{student.name}</p>
+                        <button onClick={() => startEditingPreview(index)}>✎</button>
+                        <button onClick={() => removeFromPreview(index)}>×</button>
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>
