@@ -148,6 +148,7 @@ const CreateDocumentContainer = () => {
         data: {
           number: "№" + number,
           dateAndNumber: `${FormatDocumentDate(numberDate)} №${number}`,
+          topDateAndNumber: FormatPracticDate(numberDate),
           dateFromAndTo: `${FormatPracticDate(
             startDate
           )} по ${FormatPracticDate(endDate)}`,

@@ -13,9 +13,10 @@ const Groups = () => {
   }, []);
 
   const handleCreateGroup = async () => {
-    const newGroup = await createGroup({ name: newGroupName, course: 'course' });
+    const newGroup = await createGroup({ name: newGroupName, course: newCourse });
     setGroups([...groups, newGroup]);
     setNewGroupName('');
+    setNewCourse('');
   };
 
   const handleEditGroup = async (id) => {
@@ -43,7 +44,9 @@ const Groups = () => {
                 onChange={(e) => setEditGroupName(e.target.value)}
               />
             ) : (
-              <p style={{ width: "250px" }}>{group.name}</p>
+              <>
+                <p style={{ width: "600px" }}>Группа: {group.name} | Курс: {group.course}</p>
+              </>
             )}
             {editGroupId === group._id ? (
               <button className="button" onClick={() => handleEditGroup(group._id)}>Сохранить</button>

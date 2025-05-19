@@ -14,6 +14,7 @@ const documentDataSchema = new mongoose.Schema({
   students: [studentSchema],
   number: { type: String, required: true },
   dateAndNumber: { type: String, required: true},
+  topDateAndNumber: { type: String, required: true },
   companyName: { type: String, required: true},
   course: { type: String, required: true},
   lessons: [documentLessonsSchema],
