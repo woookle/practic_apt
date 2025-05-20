@@ -184,7 +184,7 @@ const Students = () => {
                       </>
                     ) : (
                       <>
-                        <p>{student.name}</p>
+                        <p style={{ width: "250px" }}>{student.name}</p>
                         <button onClick={() => startEditingPreview(index)}>✎</button>
                         <button onClick={() => removeFromPreview(index)}>×</button>
                       </>

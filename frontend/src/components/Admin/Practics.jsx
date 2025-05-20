@@ -42,7 +42,7 @@ const Practics = () => {
                 onChange={(e) => setEditPracticName(e.target.value)}
               />
             ) : (
-              practic.name
+              <p style={{ width: '600px' }}>{practic.name}</p>
             )}
             {editPracticId === practic._id ? (
               <button className="button" onClick={() => handleEditPractic(practic._id)}>Сохранить</button>
