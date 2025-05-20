@@ -28,7 +28,7 @@ export const sendVerificationEmail = (email, code) => {
               <img
                 src="${config.company_logo_image}"
                 alt="Logo"
-                style="width: 250px; max-width: 100%; height: auto;"
+                style="max-width: 100px; width: 100%; height: auto;"
               />
             </div>`
         }
@@ -90,7 +90,7 @@ export const sendRegistrationSuccessEmail = (email, username) => {
               <img
                 src="${config.company_logo_image}"
                 alt="Logo"
-                style="width: 250px; max-width: 100%; height: auto;"
+                style="max-width: 100px; width: 100%; height: auto;"
               />
             </div>`
                 }
@@ -154,7 +154,7 @@ export const on2faAuth = (email, username) => {
             <img
               src="${config.company_logo_image}"
               alt="Logo"
-              style="width: 250px; max-width: 100%; height: auto;"
+              style="max-width: 100px; width: 100%; height: auto;"
             />
           </div>`
               }
@@ -207,7 +207,7 @@ export const off2faAuth = (email, username) => {
             <img
               src="${config.company_logo_image}"
               alt="Logo"
-              style="width: 250px; max-width: 100%; height: auto;"
+              style="max-width: 150px; width: 100%; height: auto;"
             />
           </div>`
               }
